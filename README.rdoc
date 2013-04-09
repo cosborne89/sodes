@@ -1,3 +1,12 @@
+== Welcome to sodes
+
+Hi!
+
+I am learning Ruby on Rails. This is just a simple test app for me to learn from. Not a lot going on.
+
+Sincerely,
+cosborne
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
