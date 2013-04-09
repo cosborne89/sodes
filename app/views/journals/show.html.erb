@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Meeting:</b>
+  <%= @journal.meeting %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @journal.title %>
+</p>
+
+<p>
+  <b>Event date:</b>
+  <%= @journal.event_date %>
+</p>
+
+<p>
+  <b>Begin time:</b>
+  <%= @journal.begin_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @journal.end_time %>
+</p>
+
+<p>
+  <b>Attendees:</b>
+  <%= @journal.attendees %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @journal.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<%= link_to 'Back', journals_path %>

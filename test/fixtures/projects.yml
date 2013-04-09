@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  time: 2013-04-07 10:05:16
+  title: MyString
+  description: MyText
+  common_knowledge: MyText
+  parent: 1
+  due_date: 2013-04-07
+  budget: 
+
+two:
+  time: 2013-04-07 10:05:16
+  title: MyString
+  description: MyText
+  common_knowledge: MyText
+  parent: 1
+  due_date: 2013-04-07
+  budget: 
