@@ -1,3 +1,5 @@
+<h1>Project Page</h1>
+<h2>Project Info</h2>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -35,7 +37,7 @@
   <%= @project.budget %>
 </p>
 
-
+<h2>Project Tasks:</h2>
 <table>
   <tr>
     <th>Priority</th>
@@ -63,6 +65,7 @@
   </tr>
 <% end %>
 </table>
+<%= link_to 'Add New Task', new_user_project_task_path(@user.displayname, @project) %> |
 
 <%= link_to 'Edit', edit_user_project_path(@user.displayname, @project) %> |
 <%= link_to 'Back', user_projects_path(@user.displayname) %>

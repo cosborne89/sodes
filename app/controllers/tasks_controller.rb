@@ -31,10 +31,11 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @user = User.find_by_displayname(params[:user_id])
-    @task = @user.tasks.new
     @projects = @user.projects.all
-
-
+    if params[:project_id]
+      @project_title = @user.projects.find(params[:project_id]).title
+    end
+    @task = @user.tasks.new
     respond_to do |format|
       @task.save
       format.html # new.html.erb

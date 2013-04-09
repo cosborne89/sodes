@@ -22,7 +22,7 @@
     <td><%= task.description %></td>
     <td><%= task.due_date %></td>
     <td><%= task.contact %></td>
-    <td><%= @projects.find(task.project_id).title %></td>
+    <td><%= task.project_id ? @projects.find(task.project_id).title : " " %></td>
     <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
     <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
     <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -37,7 +37,12 @@
   </div>
   <div class="field">
     <%= f.label :project_id %><br />
+    <% if params[:project_id] %>  
+    <%= f.label @project_title %>
+    <%= f.hidden_field :project_id, :value => params[:project_id] %>
+    <% else %>
     <%= collection_select(:task, :project_id, @projects, :id, :title, {:prompt => true}) %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit "Save Task" %>
