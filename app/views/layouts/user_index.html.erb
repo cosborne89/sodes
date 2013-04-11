@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="top-banner" class="banner">
+		<div class="banner-inner">
+			<ul>
+				<li><b>Sodes</b></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content-shell">
+		<div class="content-int">	
+		<%= yield %>
+		</div>
+	</div>
 
-<%= yield %>
+
 
 </body>
 </html>

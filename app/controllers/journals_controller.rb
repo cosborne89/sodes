@@ -19,7 +19,17 @@ class JournalsController < ApplicationController
   # GET /journals/1
   # GET /journals/1.json
   def show
-    @journal = Journal.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
+      if params[:project_id]
+        @project = @user.projects.find(params[:project_id])
+        @journal = @project.journals.find(params[:id])
+      else
+        @journal = @user.journals.find(params[:id])
+      end
+    else
+      @journal = Journal.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

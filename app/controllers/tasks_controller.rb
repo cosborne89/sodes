@@ -19,7 +19,17 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = Task.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
+      if params[:project_id]
+        @project = @user.projects.find(params[:project_id])
+        @task = @project.tasks.find(params[:id])
+      else
+        @task = @user.tasks.find(params[:id])
+      end
+    else
+      @task = Task.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,6 +44,7 @@ class TasksController < ApplicationController
     @projects = @user.projects.all
     if params[:project_id]
       @project_title = @user.projects.find(params[:project_id]).title
+      @project = @user.projects.find(params[:project_id])
     end
     @task = @user.tasks.new
     respond_to do |format|
@@ -59,15 +70,20 @@ class TasksController < ApplicationController
   def create
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
-#This was here before      @task = Task.new(params[:task])
-      @task = @user.tasks.create(params[:task])
       @projects = @user.projects.all
+      if params[:project_id]
+        @project = @user.projects.find(params[:project_id])
+        @task = @project.tasks.create(params[:task])
+      else
+        @task = @user.tasks.create(params[:task])
+      end
+
     else
       @task = Task.new(params[:task])
     end
     respond_to do |format|
       if @task.save
-        format.html { redirect_to user_task_path(@user.displayname, @task), notice: 'Task was successfully created.' }
+        format.html { redirect_to params[:project_id] ? user_project_task_path(@user.displayname, @project, @task) : user_task_path(@user.displayname, @task), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
