@@ -1,4 +1,4 @@
-<%= form_for(@journal) do |f| %>
+<%= form_for(@journal, :url => user_journal_path(@user.displayname, @journal)) do |f| %>
   <% if @journal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
@@ -40,12 +40,13 @@
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id, :value => @user.id %>
-  </div>
-  <div class="field">
     <%= f.label :project_id %><br />
-    <%= f.text_field :project_id, :value => "This will be a combo box later" %>
+    <% if params[:project_id] %>  
+    <%= f.label @project_title %>
+    <%= f.hidden_field :project_id, :value => params[:project_id] %>
+    <% else %>
+    <%= collection_select(:journal, :project_id, @projects, :id, :title, {:prompt => true}) %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

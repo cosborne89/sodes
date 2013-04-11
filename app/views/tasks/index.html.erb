@@ -23,9 +23,9 @@
     <td><%= task.due_date %></td>
     <td><%= task.contact %></td>
     <td><%= task.project_id ? @projects.find(task.project_id).title : " " %></td>
-    <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
-    <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
-    <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', user_task_path(@user.displayname, task) %></td>
+    <td><%= link_to 'Edit', edit_user_task_path(@user.displayname, task) %></td>
+    <td><%= link_to 'Destroy', user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

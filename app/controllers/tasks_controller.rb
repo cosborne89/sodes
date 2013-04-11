@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    if params[:username]
+    if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
 #This was here before      @task = Task.new(params[:task])
       @task = @user.tasks.create(params[:task])
@@ -67,7 +67,7 @@ class TasksController < ApplicationController
     end
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to user_task_path(@user.displayname, @task), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }

@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @project = @user.projects.find(params[:id])
       @tasks = @project.tasks
+      @journals = @project.journals
     else
       @project = Project.find(params[:id])
     end
@@ -35,8 +36,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @user = User.find_by_displayname(params[:user_id])
-    @project = @user.projects.new
-    @project.save
+    @project = @user.projects.create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     end
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to user_project_path(@user.displayname, @project), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }

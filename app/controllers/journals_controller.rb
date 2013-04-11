@@ -2,10 +2,10 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
   def index
-    if params[:username]
-      @user = User.where(:displayname => params[:username]).first
-      @journals = Journal.where(:user_id => @user)
-      @user_name = @user.name
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
+      @projects = @user.projects
+      @journals = @user.journals
     else
       @journals = Journal.all
     end
@@ -30,8 +30,9 @@ class JournalsController < ApplicationController
   # GET /journals/new
   # GET /journals/new.json
   def new
-    @user = User.where(:displayname => params[:username]).first
-    @journal = Journal.new
+    @user = User.find_by_displayname(params[:user_id])
+    @projects = @user.projects.all
+    @journal = @user.journals.create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,22 +42,27 @@ class JournalsController < ApplicationController
 
   # GET /journals/1/edit
   def edit
-    @journal = Journal.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
+      @journal = @user.journals.find(params[:id])
+    else
+      @journal = Journal.find(params[:id])
+    end
   end
 
   # POST /journals
   # POST /journals.json
   def create
-    if params[:username]
-      @user = User.where(:displayname => params[:username]).first
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
 #This was here before      @journal = Project.new(params[:journal])
       @journal = @user.journals.create(params[:journal])
     else
-      journal = Journal.new(params[:journal])
+      @journal = Journal.new(params[:journal])
     end
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
+        format.html { redirect_to user_journal_path(@user.displayname, @project), notice: 'Journal was successfully created.' }
         format.json { render json: @journal, status: :created, location: @journal }
       else
         format.html { render action: "new" }
@@ -68,11 +74,16 @@ class JournalsController < ApplicationController
   # PUT /journals/1
   # PUT /journals/1.json
   def update
-    @journal = Journal.find(params[:id])
+    if params[:user_id]
+      @user = User.find_by_displayname(params[:user_id])
+      @journal = @user.journals.find(params[:id])
+    else
+      @journal = Journal.find(params[:id])
+    end
 
     respond_to do |format|
       if @journal.update_attributes(params[:journal])
-        format.html { redirect_to @journal, notice: 'Journal was successfully updated.' }
+        format.html { redirect_to user_journal_path(@user.displayname, @project), notice: 'Journal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,7 +99,7 @@ class JournalsController < ApplicationController
     @journal.destroy
 
     respond_to do |format|
-      format.html { redirect_to journals_url }
+      format.html { redirect_to user_journals_url }
       format.json { head :no_content }
     end
   end

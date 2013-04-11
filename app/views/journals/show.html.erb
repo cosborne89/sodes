@@ -36,5 +36,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_journal_path(@journal) %> |
-<%= link_to 'Back', journals_path %>
+<%= link_to 'Edit', edit_user_journal_path(@user.displayname, @journal) %> |
+<%= link_to 'Back', user_journals_path(@user.displayname) %>

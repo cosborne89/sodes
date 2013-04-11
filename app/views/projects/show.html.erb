@@ -1,21 +1,99 @@
-<h1>Project Page</h1>
+<h1>  <%= @project.title.upcase %></h1>
+<p>
+  <b>DATE ADDED:</b>
+  <%= @project.time.to_date %>
+</p>
+
+<p>
+  <b>DESCRIPTION:</b>
+  <%= @project.description %>
+</p>
+<div class="content-left">
+<h2>Tasks:</h2>
+<div class="item-list-container"</div>
+<table>
+  <div class="item-list-line-item">
+    <tr>
+      <th>Priority</th>
+      <th>Active</th>
+      <th>Complete</th>
+      <th>Description</th>
+      <th>Due date</th>
+      <th>Contact</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </div>
+    </tr>
+  
+
+<% @tasks.each do |task| %>
+  <div class="item-list-line-item">
+    <tr>
+      <td><%= task.priority %></td>
+      <td><%= task.active %></td>
+      <td><%= task.complete %></td>
+      <td><%= task.description %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.contact %></td>
+      <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
+      <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
+      <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  </div>
+<% end %>
+</table>
+</div>
+
+<h2>Journals:</h2>
+<div class="item-list-container"</div>
+<table>
+  <div class="item-list-line-item">
+    <tr>
+      <th>Meeting</th>
+      <th>Title</th>
+      <th>Event date</th>
+      <th>Begin time</th>
+      <th>End time</th>
+      <th>Attendees</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </div>
+  <% @journals.each do |journal| %>
+    <div class="item-list-line-item">
+      <tr>
+        <td><%= journal.meeting %></td>
+        <td><%= journal.title %></td>
+        <td><%= journal.event_date %></td>
+        <td><%= journal.begin_time.to_time %></td>
+        <td><%= journal.end_time.to_time %></td>
+        <td><%= journal.attendees %></td>
+        <td><%= journal.body %></td>
+        <td><%= link_to 'Show', user_journal_path(@user.displayname, journal) %></td>
+        <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
+        <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    </div>
+<% end %>
+</table>
+</div>
+
+
+<%= link_to 'New Journal', new_user_journal_path(@user.displayname) %> |
+<%= link_to 'Add New Task', new_user_project_task_path(@user.displayname, @project) %> |
+
+<%= link_to 'Edit', edit_user_project_path(@user.displayname, @project) %> |
+<%= link_to 'Back', user_projects_path(@user.displayname) %>
+</div>
+
+<div class="content-right">
 <h2>Project Info</h2>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Time:</b>
-  <%= @project.time %>
-</p>
 
-<p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
 
 <p>
   <b>Common knowledge:</b>
@@ -36,36 +114,4 @@
   <b>Budget:</b>
   <%= @project.budget %>
 </p>
-
-<h2>Project Tasks:</h2>
-<table>
-  <tr>
-    <th>Priority</th>
-    <th>Active</th>
-    <th>Complete</th>
-    <th>Description</th>
-    <th>Due date</th>
-    <th>Contact</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.priority %></td>
-    <td><%= task.active %></td>
-    <td><%= task.complete %></td>
-    <td><%= task.description %></td>
-    <td><%= task.due_date %></td>
-    <td><%= task.contact %></td>
-    <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
-    <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
-    <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-<%= link_to 'Add New Task', new_user_project_task_path(@user.displayname, @project) %> |
-
-<%= link_to 'Edit', edit_user_project_path(@user.displayname, @project) %> |
-<%= link_to 'Back', user_projects_path(@user.displayname) %>
+</div>

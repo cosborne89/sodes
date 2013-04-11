@@ -8,7 +8,24 @@
 </head>
 <body>
 
-<%= yield %>
+	<div id="top-banner" class="banner">
+		<div class="banner-inner">
+			<ul>
+				<li><b>Sodes</b></li>
+				<li><%= link_to @user.displayname, user_path(@user.displayname) %></li>
+				<li><%= link_to "NEW PROJECT", new_user_project_path(@user.displayname) %></li>
+				<li><%= link_to "NEW TASK", new_user_task_path(@user.displayname) %></li>
+				<li><%= link_to "NEW JOURNAL", new_user_journal_path(@user.displayname) %></li>
+				<li><%= link_to "NEW MEETING", new_user_journal_path(@user.displayname) %></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content-shell">
+		<div class="content-int">	
+		<%= yield %>
+		</div>
+	</div>
+
 
 </body>
 </html>
