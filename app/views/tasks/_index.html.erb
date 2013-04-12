@@ -1,0 +1,66 @@
+<div class="item-list-container">
+  <table class="item-list-table">
+    <tr class="item-list-line-item data-row">
+      <th>Priority</th>
+      <th>Active</th>
+      <th>Complete</th>
+      <% if params[:project_id] %>
+      <% else %>
+      <th>Project</th>
+      <% end %>
+      <th>Description</th>
+      <th>Due date</th>
+      <th>Contact</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr class="spacer-row">
+        <th></th>
+        <th></th>
+        <% if params[:project_id] %>
+        <% else %>
+        <th></th>
+        <% end %>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+<% @tasks.each do |task| %>
+    <tr class="spacer-row">
+      <th></th>
+      <th></th>
+      <th></th>
+      <% if params[:project_id] %>
+      <% else %>
+      <th></th>
+      <% end %>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr class="item-list-line-item data-row">
+      <td><%= task.priority %></td>
+      <td><%= task.active %></td>
+      <td><%= task.complete %></td>
+      <% if params[:project_id] %>
+      <% else %>
+      <th><%= task.project_id %></th>
+      <% end %>
+      <td><%= task.description %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.contact %></td>
+      <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
+      <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
+      <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<% end %>
+</table>
+</div>

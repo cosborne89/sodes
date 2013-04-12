@@ -107,6 +107,7 @@ h2 {
 	border-radius: 10px;
 	margin: auto;
 	border-spacing: 0;
+	min-width: 90%;
 }
 
 .item-list-table tr.data-row th, .item-list-table tr.data-row td {

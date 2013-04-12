@@ -1,32 +1,6 @@
-<h1>Listing tasks</h1>
+<h1>TASK LIST</h1>
 
-<table>
-  <tr>
-    <th>Priority</th>
-    <th>Active</th>
-    <th>Complete</th>
-    <th>Description</th>
-    <th>Due date</th>
-    <th>Contact</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.priority %></td>
-    <td><%= task.active %></td>
-    <td><%= task.complete %></td>
-    <td><%= link_to task.description, user_task_path(@user.displayname, task) %></td>
-    <td><%= task.due_date %></td>
-    <td><%= task.contact %></td>
-    <td><%= task.project_id ? @projects.find(task.project_id).title : " " %></td>
-    <td><%= link_to 'Edit', edit_user_task_path(@user.displayname, task) %></td>
-    <td><%= link_to 'Destroy', user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'tasks/index' %>
 
 <br />
 

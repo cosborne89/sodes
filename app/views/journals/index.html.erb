@@ -1,36 +1,6 @@
 <h1>Listing journals</h1>
 
-<table>
-  <tr>
-    <th>Meeting</th>
-    <th>Title</th>
-    <th>Event date</th>
-    <th>Begin time</th>
-    <th>End time</th>
-    <th>Attendees</th>
-    <th>Body</th>
-    <th>User_id</th>
-    <th>Project_id</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @journals.each do |journal| %>
-  <tr>
-    <td><%= journal.meeting %></td>
-    <td><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></td>
-    <td><%= journal.event_date %></td>
-    <td><%= journal.begin_time %></td>
-    <td><%= journal.end_time %></td>
-    <td><%= journal.attendees %></td>
-    <td><%= journal.body %></td>
-    <td><%= journal.user_id %></td>
-    <td><%= journal.project_id %></td>
-    <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
-    <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'index' %>
 
 <br />
 

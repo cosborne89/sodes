@@ -1,31 +1,48 @@
 <h1>PROJECTS</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Date Added</th>
-    <th>Parent</th>
-    <th>Due date</th>
-    <th>Budget</th>
-    <th>Edit</th>
-    <th>Destroy</th>
+<div class="item-list-container">
+  <table class="item-list-table">
+    <tr class="item-list-line-item data-row">
+    <th>TITLE</th>
+    <th>DESCRIPTION</th>
+    <th>DATE ADDED</th>
+    <th>PARENT</th>
+    <th>DUE DATE</th>
+    <th>EDIT</th>
+    <th>DESTROY</th>
   </tr>
+    <tr class="spacer-row">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
 <% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.title, user_project_path(params[:user_id], project) %></td>
-    <td><%= project.description %></td>
-    <td><%= project.time.to_date %></td>
-    <td><%= project.parent %></td>
-    <td><%= project.due_date %></td>
-    <td><%= project.budget %></td>
-    <td><%= link_to 'Edit', edit_user_project_path(params[:user_id], project) %></td>
-    <td><%= link_to 'Destroy', user_project_path(params[:user_id], project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <tr class="spacer-row">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr class="item-list-line-item data-row">
+        <td><%= link_to project.title, user_project_path(params[:user_id], project) %></td>
+        <td><%= project.description %></td>
+        <td><%= project.time.to_date %></td>
+        <td><%= project.parent %></td>
+        <td><%= project.due_date %></td>
+        <td><%= link_to 'Edit', edit_user_project_path(params[:user_id], project) %></td>
+        <td><%= link_to 'Destroy', user_project_path(params[:user_id], project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
 <%= link_to 'New Project', new_user_project_path(@user.displayname) %>

@@ -9,115 +9,14 @@
   <%= @project.description %>
 </p>
 <div class="content-left">
-<div class="content-title">
-  <h2>TASKS:</h2>
-</div>
-<div class="item-list-container">
-  <table class="item-list-table">
-    <tr class="item-list-line-item data-row">
-      <th>Priority</th>
-      <th>Active</th>
-      <th>Complete</th>
-      <th>Description</th>
-      <th>Due date</th>
-      <th>Contact</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-      <tr class="spacer-row">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-  
-
-<% @tasks.each do |task| %>
-    <tr class="spacer-row">
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr class="item-list-line-item data-row">
-      <td><%= task.priority %></td>
-      <td><%= task.active %></td>
-      <td><%= task.complete %></td>
-      <td><%= task.description %></td>
-      <td><%= task.due_date %></td>
-      <td><%= task.contact %></td>
-      <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
-      <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
-      <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-<% end %>
-</table>
-</div>
-
-
-  <h2>JOURNALS:</h2>
-
-<div class="item-list-container">
-  <table class="item-list-table">
-      <tr class="item-list-line-item data-row">
-        <th>Meeting</th>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Date</th>
-        <th>Begin time</th>
-        <th>End time</th>
-        <th>Attendees</th>
-        <th></th>
-        <th></th>
-      </tr>
-        <tr class="spacer-row">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-    <% @journals.each do |journal| %>
-        <tr class="spacer-row">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr class="item-list-line-item data-row">
-          <td><%= journal.meeting %></td>
-          <td><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></td>
-          <td><%= journal.body %></td>
-          <td><%= journal.event_date %></td>
-          <td><%= journal.begin_time.to_time %></td>
-          <td><%= journal.end_time.to_time %></td>
-          <td><%= journal.attendees %></td>
-          <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
-          <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-  <% end %>
-  </table>
-</div>
+  <div class="content-title">
+    <h2>TASKS:</h2>
+  </div>
+   <%= render 'tasks/index' %>
+  <div class="content-title">
+    <h2>JOURNALS:</h2>
+  </div>
+  <%= render 'journals/index' %>
 
 
 <%= link_to 'New Journal', new_user_journal_path(@user.displayname) %> |
@@ -149,4 +48,5 @@
   <p>
     <%= @project.common_knowledge %>
   </p>
+</div>
 </div>
