@@ -12,20 +12,18 @@
     <th>User ID</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.time %></td>
-    <td><%= project.title %></td>
+    <td><%= link_to project.title, user_project_path(params[:user_id], project) %></td>
     <td><%= project.description %></td>
     <td><%= project.common_knowledge %></td>
     <td><%= project.parent %></td>
     <td><%= project.due_date %></td>
     <td><%= project.budget %></td>
     <td><%= project.user_id %></td>
-    <td><%= link_to 'Show', user_project_path(params[:user_id], project) %></td>
     <td><%= link_to 'Edit', edit_user_project_path(params[:user_id], project) %></td>
     <td><%= link_to 'Destroy', user_project_path(params[:user_id], project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

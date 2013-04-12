@@ -9,11 +9,12 @@
   <%= @project.description %>
 </p>
 <div class="content-left">
-<h2>Tasks:</h2>
-<div class="item-list-container"</div>
+<div class="content-title">
+  <h2>Tasks:</h2>
+</div>
+<div class="item-list-container">
 <table>
-  <div class="item-list-line-item">
-    <tr class="item-list-line-item">
+    <tr class="item-list-line-item space-under">
       <th>Priority</th>
       <th>Active</th>
       <th>Complete</th>
@@ -24,12 +25,10 @@
       <th></th>
       <th></th>
     </tr>
-  </div>
   
 
 <% @tasks.each do |task| %>
-  <div class="item-list-line-item">
-    <tr>
+    <tr class="item-list-line-item space-under">
       <td><%= task.priority %></td>
       <td><%= task.active %></td>
       <td><%= task.complete %></td>
@@ -40,16 +39,16 @@
       <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
       <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  </div>
 <% end %>
 </table>
 </div>
 
-<h2>Journals:</h2>
+
+  <h2>Journals:</h2>
+
 <div class="item-list-container"</div>
 <table>
-  <div class="item-list-line-item">
-    <tr>
+    <tr class="item-list-line-item space-under">
       <th>Meeting</th>
       <th>Title</th>
       <th>Event date</th>
@@ -61,10 +60,8 @@
       <th></th>
       <th></th>
     </tr>
-  </div>
   <% @journals.each do |journal| %>
-    <div class="item-list-line-item">
-      <tr>
+      <tr class="item-list-line-item space-under">
         <td><%= journal.meeting %></td>
         <td><%= journal.title %></td>
         <td><%= journal.event_date %></td>
@@ -76,7 +73,6 @@
         <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
         <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </div>
 <% end %>
 </table>
 </div>
