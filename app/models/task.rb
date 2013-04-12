@@ -6,6 +6,7 @@ class Task < ActiveRecord::Base
   attr_accessible :active, :complete, :contact, :description, :due_date, :priority, :user_id, :journal_id, :project_id 
 
 before_save :default_values
+before_save { validates_presence_of :project_id }
 def default_values
 	#set default values here. THis is just an example.
 end

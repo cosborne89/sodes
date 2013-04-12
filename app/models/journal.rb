@@ -5,4 +5,5 @@ class Journal < ActiveRecord::Base
   belongs_to :project, :foreign_key => "project_id"
   accepts_nested_attributes_for :tasks
 
+  before_save { validates_presence_of :project_id }
 end
