@@ -7,5 +7,6 @@ Checklist.rdoc
 - Clean up indexes by
 	a) DONE - Removing Show column and making the title the link
 	b) moving the date to a secondary area.
+	d) Defining column width.
 
 - Change some datetimes to just time. Need to identify these.
