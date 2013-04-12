@@ -42,8 +42,11 @@ class JournalsController < ApplicationController
   def new
     @user = User.find_by_displayname(params[:user_id])
     @projects = @user.projects.all
-    @journal = @user.journals.create
-
+    if params[:project_id]
+      @project_title = @user.projects.find(params[:project_id]).title
+      @project = @user.projects.find(params[:project_id])
+    end
+    @journal = @user.journals.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @journal }
@@ -55,6 +58,7 @@ class JournalsController < ApplicationController
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
       @journal = @user.journals.find(params[:id])
+      @projects = @user.projects.all
     else
       @journal = Journal.find(params[:id])
     end
@@ -65,14 +69,19 @@ class JournalsController < ApplicationController
   def create
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
-#This was here before      @journal = Project.new(params[:journal])
-      @journal = @user.journals.create(params[:journal])
+      @projects = @user.projects.all
+      if params[:project_id]
+        @project = @user.projects.find(params[:project_id])
+        @journal = @project.journals.create
+      else
+        @journal = @user.journals.create
+      end
     else
-      @journal = Journal.new(params[:journal])
+      @journal = Journal.new
     end
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to user_journal_path(@user.displayname, @project), notice: 'Journal was successfully created.' }
+        format.html { redirect_to params[:project_id] ? user_project_journal_path(@user.displayname, @project, @journal) : user_journal_path(@user.displayname, @journal), notice: 'Journal was successfully created.' }
         format.json { render json: @journal, status: :created, location: @journal }
       else
         format.html { render action: "new" }
@@ -93,7 +102,7 @@ class JournalsController < ApplicationController
 
     respond_to do |format|
       if @journal.update_attributes(params[:journal])
-        format.html { redirect_to user_journal_path(@user.displayname, @project), notice: 'Journal was successfully updated.' }
+        format.html { redirect_to user_journal_path(@user.displayname, @journal), notice: 'Journal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

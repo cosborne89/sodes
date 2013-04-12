@@ -1,14 +1,12 @@
 Checklist.rdoc
 
-- Clicking save in New Journal, when you get there via a project, should redirect you to users/:user/projects/:project/journal/:(new)task but it does not go to the project page. just user/journal. This is fixed in the tasks model, so copy the new, create and form_for (in _form) from there.
+- Creating a new journal without a starting project does not work. The fields are all screwed up. Compare to Tasks#new to fix.
 
 - Edit "Edit" and "Back" on /new for journal and task so that they route to task#index or journal#index if :project_id doesn't exist. Should be straightforward ternary.
 
 - Clean up indexes by
 	d) Defining column width.
 
-- Change some datetimes to just time. Need to identify these.
+- Change some datetimes to just time. These are journal begin and end time, task due date, project due date
 
 - Only show the name of the project in journals#index and tasks#index, not project#show
-
-- Show the name of the project instead of the id in journals#index and task#index.

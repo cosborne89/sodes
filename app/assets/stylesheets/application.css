@@ -27,6 +27,9 @@ h1, h2, p, th, td, a, li {
 	font-family: verdana, arial, helvetica, sans-serif;
 }
 
+.bold {
+	font-weight: bold;
+}
 
 .banner {
 	margin: 0px;
@@ -42,21 +45,46 @@ h1, h2, p, th, td, a, li {
 	margin-left: 12.5%;
 	width: 75%;
 }
-.banner ul, .banner li {
+.banner ul, .banner .banner-link {
 	margin: 0;
 	padding: 0;
 	display: inline;
 	list-style-type: none;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 5px 0px 5px;
 	color: #182432;
 }
 
-.banner li a {
+.banner .banner-link a, .banner p a {
 	background-color: #d8d8d8;
-	padding: 5px;
+	margin: 0;
+	padding: 4px;
 	border-radius: 4px;
 	color: #377dae;
 	text-decoration: none;
+	font-size: .8em;
+}
+
+.right-align {
+	float: right;
+}
+
+.sodes-title {
+	display: inline;
+	font-size: .8em;
+	font-weight: bold;
+	background-color: #d8d8d8;
+	border-radius: 8px;
+	color: #377dae;
+	padding: 5px 10px;
+}
+
+.banner-text {
+	display: inline;
+	font-size: .9em;
+	color: #d8d8d8;
+	padding: 5px 2px;
+	margin: 0;
+	padding: 0;
 }
 
 h1 {
@@ -107,7 +135,7 @@ h2 {
 	border-radius: 10px;
 	margin: auto;
 	border-spacing: 0;
-	min-width: 90%;
+	min-width: 100%;
 }
 
 .item-list-table tr.data-row th, .item-list-table tr.data-row td {

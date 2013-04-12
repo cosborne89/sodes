@@ -13,7 +13,6 @@
       <th>Contact</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
     <tr class="spacer-row">
         <th></th>
@@ -22,7 +21,6 @@
         <% else %>
         <th></th>
         <% end %>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -44,7 +42,6 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
       <td><%= task.priority %></td>
@@ -52,12 +49,11 @@
       <td><%= task.complete %></td>
       <% if params[:project_id] %>
       <% else %>
-      <th><%= task.project_id %></th>
+      <td><%= @projects.find(task.project_id).title %></td>
       <% end %>
-      <td><%= task.description %></td>
+      <td><%= link_to task.description, user_task_path(params[:user_id], task) %></td>
       <td><%= task.due_date %></td>
       <td><%= task.contact %></td>
-      <td><%= link_to 'Show', user_task_path(params[:user_id], task) %></td>
       <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
       <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>

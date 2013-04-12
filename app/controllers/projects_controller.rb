@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   def show
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
+      @projects = @user.projects
       @project = @user.projects.find(params[:id])
       @tasks = @project.tasks
       @journals = @project.journals
@@ -66,7 +67,7 @@ class ProjectsController < ApplicationController
     end
     respond_to do |format|
       if @project.save
-        format.html { redirect_to user_project_path(@user.displayname, @project), notice: 'Project was successfully created.' }
+        format.html { redirect_to params[:project_id] ? user_project_journal_path(@user.displayname, @project, @task) : user_journal_path(@user.displayname, @task), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }

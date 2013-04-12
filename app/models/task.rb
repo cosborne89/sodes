@@ -5,4 +5,9 @@ class Task < ActiveRecord::Base
   belongs_to :projects, :foreign_key => "project_id"
   attr_accessible :active, :complete, :contact, :description, :due_date, :priority, :user_id, :journal_id, :project_id 
 
+before_save :default_values
+def default_values
+	#set default values here. THis is just an example.
+end
+
 end

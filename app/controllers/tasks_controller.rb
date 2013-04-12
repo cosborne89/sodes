@@ -48,7 +48,6 @@ class TasksController < ApplicationController
     end
     @task = @user.tasks.new
     respond_to do |format|
-      @task.save
       format.html # new.html.erb
       format.json { render json: @task }
     end
@@ -61,7 +60,7 @@ class TasksController < ApplicationController
       @task = @user.tasks.find(params[:id])
       @projects = @user.projects.all
     else
-    @task = Task.find(params[:id])
+      @task = Task.find(params[:id])
     end
   end
 
@@ -73,13 +72,12 @@ class TasksController < ApplicationController
       @projects = @user.projects.all
       if params[:project_id]
         @project = @user.projects.find(params[:project_id])
-        @task = @project.tasks.create(params[:task])
+        @task = @project.tasks.create
       else
-        @task = @user.tasks.create(params[:task])
+        @task = @user.tasks.create
       end
-
     else
-      @task = Task.new(params[:task])
+      @task = Task.new
     end
     respond_to do |format|
       if @task.save

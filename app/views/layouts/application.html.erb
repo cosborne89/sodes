@@ -7,17 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 	<div id="top-banner" class="banner">
 		<div class="banner-inner">
 			<ul>
-				<li><b>Sodes</b></li>
-				<li><%= link_to @user.displayname, user_path(@user.displayname) %></li>
-				<li><%= link_to "NEW PROJECT", new_user_project_path(@user.displayname) %></li>
-				<li><%= link_to "NEW TASK", new_user_task_path(@user.displayname) %></li>
-				<li><%= link_to "NEW JOURNAL", new_user_journal_path(@user.displayname) %></li>
-				<li><%= link_to "NEW MEETING", new_user_journal_path(@user.displayname) %></li>
+				<li class="sodes-title">SODES</li>
+				<li class="banner-text bold">Quick Links:</li>
+				<li class="banner-text">|</li>
+				<li class="banner-text">Projects:</li>
+				<li class="banner-link"><%= link_to "ALL", user_projects_path(@user.displayname) %></li>
+				<li class="banner-link"><%= link_to "NEW", new_user_project_path(@user.displayname) %></li>
+				<li class="banner-text">|</li>
+				<li class="banner-text">Tasks:</li>
+				<li class="banner-link"><%= link_to "ALL", user_tasks_path(@user.displayname) %></li>
+				<li class="banner-link"><%= link_to "NEW", new_user_task_path(@user.displayname) %></li>
+				<li class="banner-text">|</li>
+				<li class="banner-text">Journals:</li>
+				<li class="banner-link"><%= link_to "ALL", user_journals_path(@user.displayname) %></li>
+				<li class="banner-link"><%= link_to "NEW", new_user_journal_path(@user.displayname) %></li>
+				<li class="banner-text">|</li>
+				<li class="banner-text">Meetings:</li>
+				<li class="banner-link"><%= link_to "ALL", user_journals_path(@user.displayname) %></li>
+				<li class="banner-link"><%= link_to "NEW", new_user_journal_path(@user.displayname) %></li>
 			</ul>
+			<p class="banner-link right-align"><%= link_to @user.displayname, user_path(@user.displayname) %>
+			<p class="banner-text right-align">|</p>
 		</div>
 	</div>
 	<div class="content-shell">
@@ -25,7 +38,5 @@
 		<%= yield %>
 		</div>
 	</div>
-
-
 </body>
 </html>

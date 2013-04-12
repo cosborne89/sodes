@@ -19,7 +19,7 @@
   <%= render 'journals/index' %>
 
 
-<%= link_to 'New Journal', new_user_journal_path(@user.displayname) %> |
+<%= link_to 'New Journal', new_user_project_journal_path(@user.displayname, @project) %> |
 <%= link_to 'Add New Task', new_user_project_task_path(@user.displayname, @project) %> |
 
 <%= link_to 'Edit', edit_user_project_path(@user.displayname, @project) %> |

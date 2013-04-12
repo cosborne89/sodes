@@ -50,13 +50,13 @@
           <td><%= journal.meeting %></td>
           <% if params[:project_id] %>
           <% else %>
-          <th><%= journal.project_id %></th>
+          <td><%= @projects.find(journal.project_id).title %></td>
           <% end %>
           <td><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></td>
           <td><%= journal.body %></td>
           <td><%= journal.event_date %></td>
-          <td><%= journal.begin_time.to_time %></td>
-          <td><%= journal.end_time.to_time %></td>
+          <td><%= journal.begin_time %></td>
+          <td><%= journal.end_time %></td>
           <td><%= journal.attendees %></td>
           <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
           <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>

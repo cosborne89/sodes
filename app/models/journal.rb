@@ -4,4 +4,5 @@ class Journal < ActiveRecord::Base
   belongs_to :user, :foreign_key => "user_id"
   belongs_to :project, :foreign_key => "project_id"
   accepts_nested_attributes_for :tasks
+
 end
