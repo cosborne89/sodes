@@ -3,5 +3,7 @@
 <%= render 'tasks/index' %>
 
 <br />
-
+<h2>QUICK ADD:</h2>
+<%= render 'tasks/form' %>
+<br />	
 <%= link_to 'New Task', new_user_task_path(@user.displayname) %>

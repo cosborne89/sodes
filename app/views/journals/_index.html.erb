@@ -1,19 +1,19 @@
 <div class="item-list-container">
   <table class="item-list-table">
       <tr class="item-list-line-item data-row">
-        <th>Meeting</th>
+        <th>MEETING</th>
         <% if params[:project_id] %>
         <% else %>
-        <th>Project</th>
+        <th>PROJECT</th>
         <% end %>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Date</th>
-        <th>Begin time</th>
-        <th>End time</th>
-        <th>Attendees</th>
-        <th></th>
-        <th></th>
+        <th>TITLE</th>
+        <th>NOTES</th>
+        <th>DATE</th>
+        <th>BEGIN</th>
+        <th>END</th>
+        <th>ATTENDEES</th>
+        <th>EDIT</th>
+        <th>DESTROY</th>
       </tr>
         <tr class="spacer-row">
           <th></th>
@@ -50,7 +50,7 @@
           <td><%= journal.meeting %></td>
           <% if params[:project_id] %>
           <% else %>
-          <td><%= @projects.find(journal.project_id).title %></td>
+          <td><%= @user.projects.find(journal.project_id).title %></td>
           <% end %>
           <td><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></td>
           <td><%= journal.body %></td>

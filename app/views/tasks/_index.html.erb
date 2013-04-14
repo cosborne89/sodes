@@ -1,18 +1,18 @@
 <div class="item-list-container">
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
-      <th>Priority</th>
-      <th>Active</th>
-      <th>Complete</th>
+      <th>PRIORITY</th>
+      <th>ACTIVE</th>
+      <th>COMPLETE</th>
       <% if params[:project_id] %>
       <% else %>
-      <th>Project</th>
+      <th>PROJECT</th>
       <% end %>
-      <th>Description</th>
-      <th>Due date</th>
-      <th>Contact</th>
-      <th></th>
-      <th></th>
+      <th>DESCRIPTION</th>
+      <th>DUE</th>
+      <th>CONTACT</th>
+      <th>EDIT</th>
+      <th>DESTROY</th>
     </tr>
     <tr class="spacer-row">
         <th></th>
@@ -49,13 +49,13 @@
       <td><%= task.complete %></td>
       <% if params[:project_id] %>
       <% else %>
-      <td><%= @projects.find(task.project_id).title %></td>
+      <td><%= @user.projects.find(task.project_id).title %></td>
       <% end %>
-      <td><%= link_to task.description, user_task_path(params[:user_id], task) %></td>
-      <td><%= task.due_date %></td>
+      <td><%= link_to task.description, user_task_path(@user.displayname, task) %></td>
+      <td><%= task.due_date.to_date %></td>
       <td><%= task.contact %></td>
-      <td><%= link_to 'Edit', edit_user_task_path(params[:user_id], task) %></td>
-      <td><%= link_to 'Destroy', user_task_path(params[:user_id], task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Edit', edit_user_task_path(@user.displayname, task) %></td>
+      <td><%= link_to 'Destroy', user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 <% end %>
 </table>

@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
       @user = User.find_by_displayname(params[:id])
+      @projects = @user.projects.find(:all, :limit => 5, :order => 'updated_at desc')
+      @tasks = @user.tasks.find(:all, :limit =>5, :order => 'created_at asc')
+      @journals = @user.journals.find(:all, :limit => 5, :order => 'updated_at desc')
 
     respond_to do |format|
       format.html # show.html.erb

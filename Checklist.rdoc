@@ -10,3 +10,11 @@ Checklist.rdoc
 - Only show the name of the project in journals#index and tasks#index, not project#show
 
 - Add validation so that description/title are needed for everything.
+
+- Add AJAX/XML Support through JS.
+
+- Link to project within task index.
+
+- Refactor application.css and organize with comments.
+
+- 

@@ -1,4 +1,5 @@
 <%= form_for(@task, :url => params[:project_id] ? user_project_tasks_path(@user.displayname, params[:project_id]) : user_tasks_path(@user.displayname), :method => :post) do |f| %>
+<div class="form-shell">
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -11,41 +12,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :priority %><br />
-    <%= f.check_box :priority %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :complete %><br />
-    <%= f.check_box :complete %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :due_date %><br />
-    <%= f.datetime_select :due_date %>
-  </div>
-  <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact %>
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br />
-    <% if params[:project_id] %>  
+<table class="item-list-table">
+    <tr class="item-list-line-item data-row">
+      <th>PRIORITY</th>
+      <th>ACTIVE</th>
+      <th>COMPLETE</th>
+      <% if params[:project_id] %>
+      <% else %>
+      <th>PROJECT</th>
+      <% end %>
+      <th>DESCRIPTION</th>
+      <th>DUE</th>
+      <th>CONTACT</th>
+      <th>SAVE</th>
+    </tr>
+    <tr class="spacer-row">
+        <th></th>
+        <th></th>
+        <% if params[:project_id] %>
+        <% else %>
+        <th></th>
+        <% end %>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+  <tr class="field">
+    <td><%= f.check_box :priority %></td>
+    <td><%= f.check_box :active %></td>
+    <td><%= f.check_box :complete %></td>
+    <td>    <% if params[:project_id] %>  
     <%= f.label @project_title %>
     <%= f.hidden_field :project_id, :value => params[:project_id] %>
     <% else %>
     <%#= collection_select(:task, :project_id, @projects, :id, :title, {:prompt => true}) %>
     <%= select("task", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false})%>
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Save Task" %>
-  </div>
+    <% end %></td>
+    <td><%= f.text_field :description %></td>
+    <td><%= f.datetime_select :due_date %></td>
+    <td><%= f.text_field :contact %></td>
+
+    <td class="actions"><%= f.submit "Save Task" %></td>
+  </tr>
+</table>
+</div>
 <% end %>

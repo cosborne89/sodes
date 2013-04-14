@@ -29,8 +29,11 @@
 				<li class="banner-link"><%= link_to "ALL", user_journals_path(@user.displayname) %></li>
 				<li class="banner-link"><%= link_to "NEW", new_user_journal_path(@user.displayname) %></li>
 			</ul>
-			<p class="banner-link right-align"><%= link_to @user.displayname, user_path(@user.displayname) %>
+			<p class="banner-link right-align"><%= link_to @user.displayname.upcase, user_path(@user.displayname) %></p>
 			<p class="banner-text right-align">|</p>
+			<p class="banner-link right-align"><%= link_to 'Settings', edit_user_path(@user) %></p>
+			<p class="banner-text right-align">|</p>
+			<p class="banner-link right-align"><%= link_to '(Admin) User Index', users_path %></p>
 		</div>
 	</div>
 	<div class="content-shell">

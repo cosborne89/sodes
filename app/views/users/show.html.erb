@@ -1,50 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+<h1><%= @user.name.upcase %></h1>
 
-<p>
-  <b>Route:</b>
-  <%= @user.displayname %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>Premium:</b>
-  <%= @user.premium %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-<div class="create-nav">
-	<p>Create New:</p>
-	<ul>
-		<%=link_to 'Task', new_user_task_path(@user.displayname)%>
-		<%=link_to 'Meeting', new_user_journal_path(@user.displayname)%>
-		<%=link_to 'Journal', new_user_journal_path(@user.displayname)%>
-		<%=link_to 'Project', new_user_project_path(@user.displayname)%>
-	</ul>
+<br />
+<div class="content-title">
+	<h2><%=link_to 'RECENT PROJECTS', user_projects_path(@user.displayname)%></h2><%=link_to 'NEW', new_user_project_path(@user.displayname)%>
 </div>
+<%= render 'projects/index' %>
 
-<div class="index-nav">
-	<p>Go To My:</p>
-	<ul>
-		<%=link_to 'Tasks', user_tasks_path(@user.displayname)%>
-		<%=link_to 'Meetings', user_journals_path(@user.displayname)%>
-		<%=link_to 'Journals', user_journals_path(@user.displayname)%>
-		<%=link_to 'Projects', user_projects_path(@user.displayname)%>
-	</ul>
+<div class="content-title">
+	<h2><%=link_to 'OLDEST TASKS', user_tasks_path(@user.displayname)%></h2>
+	<%=link_to 'NEW', new_user_task_path(@user.displayname)%>
+</div>
+<%= render 'tasks/index' %>
+
+<div class="content-title">
+	<h2><%=link_to 'RECENT JOURNALS', user_journals_path(@user.displayname)%></h2>
+	<%=link_to 'NEW', new_user_journal_path(@user.displayname)%>
+</div>
+<%= render 'journals/index' %>
 </div>

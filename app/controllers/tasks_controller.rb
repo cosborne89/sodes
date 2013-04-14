@@ -4,10 +4,17 @@ class TasksController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
-      @tasks = @user.tasks
       @projects = @user.projects
+      if params[:project_id]
+        @tasks = @projects.tasks.all
+        @task = @project.tasks.build
+      else
+       @tasks = @user.tasks.all
+       @task = @user.tasks.build
+      end
     else
       @tasks = Task.all
+      @task = Task.build
     end
 
     respond_to do |format|
