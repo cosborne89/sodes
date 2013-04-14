@@ -72,12 +72,12 @@ class TasksController < ApplicationController
       @projects = @user.projects.all
       if params[:project_id]
         @project = @user.projects.find(params[:project_id])
-        @task = @project.tasks.create
+        @task = @project.tasks.create(params[:task])
       else
-        @task = @user.tasks.create
+        @task = @user.tasks.create(params[:task])
       end
     else
-      @task = Task.new
+      @task = Task.new(params[:task])
     end
     respond_to do |format|
       if @task.save

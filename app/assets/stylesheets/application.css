@@ -115,6 +115,16 @@ h2 {
 	margin: auto;
 }
 
+.content-int > a, .content-left > a, .content-right > a {
+	background-color: #377dae;
+	margin: 5px 0px 0px 0px;
+	padding: 4px;
+	border-radius: 4px;
+	color: #d8d8d8;
+	text-decoration: none;
+	font-size: .8em;
+}
+
 .content-left {
 	width: 60%;
 	padding-right: 0px;

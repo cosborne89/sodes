@@ -45,8 +45,10 @@ class JournalsController < ApplicationController
     if params[:project_id]
       @project_title = @user.projects.find(params[:project_id]).title
       @project = @user.projects.find(params[:project_id])
+      @journal = @project.journals.new
+    else
+      @journal = @user.journals.new
     end
-    @journal = @user.journals.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @journal }
@@ -72,12 +74,12 @@ class JournalsController < ApplicationController
       @projects = @user.projects.all
       if params[:project_id]
         @project = @user.projects.find(params[:project_id])
-        @journal = @project.journals.create
+        @journal = @project.journals.create(params[:project])
       else
-        @journal = @user.journals.create
+        @journal = @user.journals.create(params[:project])
       end
     else
-      @journal = Journal.new
+      @journal = Journal.new(params[:project])
     end
     respond_to do |format|
       if @journal.save

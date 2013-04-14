@@ -1,7 +1,5 @@
 Checklist.rdoc
 
-- Creating a new journal without a starting project does not work. The fields are all screwed up. Compare to Tasks#new to fix.
-
 - Edit "Edit" and "Back" on /new for journal and task so that they route to task#index or journal#index if :project_id doesn't exist. Should be straightforward ternary.
 
 - Clean up indexes by
@@ -10,3 +8,5 @@ Checklist.rdoc
 - Change some datetimes to just time. These are journal begin and end time, task due date, project due date
 
 - Only show the name of the project in journals#index and tasks#index, not project#show
+
+- Add validation so that description/title are needed for everything.

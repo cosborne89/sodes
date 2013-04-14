@@ -5,10 +5,10 @@ class Task < ActiveRecord::Base
   belongs_to :projects, :foreign_key => "project_id"
   attr_accessible :active, :complete, :contact, :description, :due_date, :priority, :user_id, :journal_id, :project_id 
 
-before_save :default_values
-before_save { validates_presence_of :project_id }
-def default_values
-	#set default values here. THis is just an example.
+before_save :save_modifier
+
+def save_modifier
+	validates_presence_of :project_id
 end
 
 end

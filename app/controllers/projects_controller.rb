@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @user = User.find_by_displayname(params[:user_id])
-    @project = @user.projects.create
+    @project = @user.projects.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,14 +60,13 @@ class ProjectsController < ApplicationController
   def create
     if params[:user_id]
       @user = User.where(:displayname => params[:user_id]).first
-#This was here before      @project = Project.new(params[:project])
       @project = @user.projects.create(params[:project])
     else
       @project = Project.new(params[:project])
     end
     respond_to do |format|
       if @project.save
-        format.html { redirect_to params[:project_id] ? user_project_journal_path(@user.displayname, @project, @task) : user_journal_path(@user.displayname, @task), notice: 'Project was successfully created.' }
+        format.html { redirect_to user_project_path(@user.displayname, @project), notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }

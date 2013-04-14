@@ -41,7 +41,8 @@
     <%= f.label @project_title %>
     <%= f.hidden_field :project_id, :value => params[:project_id] %>
     <% else %>
-    <%= collection_select(:task, :project_id, @projects, :id, :title, {:prompt => true}) %>
+    <%#= collection_select(:task, :project_id, @projects, :id, :title, {:prompt => true}) %>
+    <%= select("task", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false})%>
     <% end %>
   </div>
   <div class="actions">
