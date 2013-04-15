@@ -1,0 +1,46 @@
+<%= form_for(@project, :url => user_project_path(@user.displayname, @project), :method => :put) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p>DATE</p>
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="field">
+    <p>TITLE</p>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <p>DESCRIPTION</p>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <p>COMMON KNOWLEDGE</p>
+    <%= f.text_area :common_knowledge %>
+  </div>
+  <div class="field">
+    <p>PARENT</p>
+    <%= f.number_field :parent %>
+  </div>
+  <div class="field">
+    <p>DUE DATE</p>
+    <%= f.date_select :due_date %>
+  </div>
+  <div class="field">
+    <p>BUDGET</p>
+    <%= f.text_field :budget %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -50,7 +50,7 @@
           <td><div class="journal-row center-text"><%= journal.meeting %></div></td>
           <% if @project_show %>
           <% else %>
-          <td><div class="journal-row center-text"><%= link_to @projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
+          <td><div class="journal-row center-text"><%= link_to @user.projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
           <% end %>
           <td><div class="journal-row"><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></div></td>
           <td><div class="journal-row"><%= journal.body %></div></td>

@@ -109,7 +109,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to user_task_path(@user.displayname, @task), notice: 'Task saved.' }
+        format.html { redirect_to user_tasks_url, notice: 'Task saved.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
