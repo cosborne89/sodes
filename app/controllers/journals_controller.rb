@@ -45,9 +45,9 @@ class JournalsController < ApplicationController
     if params[:project_id]
       @project_title = @user.projects.find(params[:project_id]).title
       @project = @user.projects.find(params[:project_id])
-      @journal = @project.journals.new
+      @journal = @projects.journals.new
     else
-      @journal = @user.journals.new
+    @journal = @user.journals.new
     end
     respond_to do |format|
       format.html # new.html.erb
@@ -74,12 +74,12 @@ class JournalsController < ApplicationController
       @projects = @user.projects.all
       if params[:project_id]
         @project = @user.projects.find(params[:project_id])
-        @journal = @project.journals.create(params[:project])
+        @journal = @project.journals.create(params[:journal])
       else
-        @journal = @user.journals.create(params[:project])
+        @journal = @user.journals.create(params[:journal])
       end
     else
-      @journal = Journal.new(params[:project])
+      @journal = Journal.new(params[:journal])
     end
     respond_to do |format|
       if @journal.save

@@ -1,27 +1,25 @@
 <div class="item-list-container">
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
-      <th>PRIORITY</th>
+      <th><%=image_tag('/assets/star.png')%></th>
       <th>ACTIVE</th>
-      <th>COMPLETE</th>
-      <% if params[:project_id] %>
+      <th><%=image_tag('/assets/checkfill.png')%></th>
+      <% if @project_show %>
       <% else %>
       <th>PROJECT</th>
       <% end %>
       <th>DESCRIPTION</th>
-      <th>DUE</th>
       <th>CONTACT</th>
-      <th>EDIT</th>
-      <th>DESTROY</th>
+      <th><%=image_tag('/assets/edit.png')%></th>
+      <th><%=image_tag('/assets/trash.png')%></th>
     </tr>
     <tr class="spacer-row">
         <th></th>
         <th></th>
-        <% if params[:project_id] %>
+        <% if @project_show %>
         <% else %>
         <th></th>
         <% end %>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -33,29 +31,27 @@
       <th></th>
       <th></th>
       <th></th>
-      <% if params[:project_id] %>
+      <% if @project_show %>
       <% else %>
       <th></th>
       <% end %>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
-      <td><%= task.priority %></td>
-      <td><%= task.active %></td>
-      <td><%= task.complete %></td>
-      <% if params[:project_id] %>
+      <td><div class="task-row center-text"><%= task.priority %></div></td>
+      <td><div class="task-row center-text"><%= task.active %></div></td>
+      <td><div class="task-row center-text"><%= task.complete %></div></td>
+      <% if @project_show %>
       <% else %>
-      <td><%= @user.projects.find(task.project_id).title %></td>
+        <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
       <% end %>
-      <td><%= link_to task.description, user_task_path(@user.displayname, task) %></td>
-      <td><%= task.due_date.to_date %></td>
-      <td><%= task.contact %></td>
-      <td><%= link_to 'Edit', edit_user_task_path(@user.displayname, task) %></td>
-      <td><%= link_to 'Destroy', user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><div class="task-row"><%= link_to task.description, user_task_path(@user.displayname, task) %></div></td>
+      <td><div class="task-row center-text"><%= task.contact %></div></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
     </tr>
 <% end %>
 </table>

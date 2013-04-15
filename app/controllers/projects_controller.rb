@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
       @project = @user.projects.find(params[:id])
       @tasks = @project.tasks
       @journals = @project.journals
+      @project_show = 1
     else
       @project = Project.find(params[:id])
     end

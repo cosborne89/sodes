@@ -1,4 +1,4 @@
-<%= form_for(@task, :url => params[:project_id] ? user_project_tasks_path(@user.displayname, params[:project_id]) : user_tasks_path(@user.displayname), :method => :post) do |f| %>
+<%= form_for(@task, :url => params[:project_id] ? user_project_task_path(@user.displayname, params[:project_id], @task) : user_task_path(@user.displayname, @task), :method => :post) do |f| %>
 <div class="form-shell">
   <% if @task.errors.any? %>
     <div id="error_explanation">

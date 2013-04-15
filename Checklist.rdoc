@@ -1,4 +1,4 @@
-Checklist.rdoc
+Checklist.rdoc (see git history for checked off tasks)
 
 - Edit "Edit" and "Back" on /new for journal and task so that they route to task#index or journal#index if :project_id doesn't exist. Should be straightforward ternary.
 
@@ -7,14 +7,10 @@ Checklist.rdoc
 
 - Change some datetimes to just time. These are journal begin and end time, task due date, project due date
 
-- Only show the name of the project in journals#index and tasks#index, not project#show
-
 - Add validation so that description/title are needed for everything.
 
 - Add AJAX/XML Support through JS.
 
-- Link to project within task index.
-
 - Refactor application.css and organize with comments.
 
-- 
+* - Clicking "Save" when Editing an existing creates a new record, probably because of the :method in the :url for the form_for. Occurs on tasks and journals and projects. Solution: put an if statement in the :method in the same manner as in the :url to use the update method instead of the create method. Have to know how to detect if its update or create (should try - it may already be baked in - cf. the button says Update vs Save).

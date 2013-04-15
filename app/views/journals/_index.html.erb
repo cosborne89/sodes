@@ -2,7 +2,7 @@
   <table class="item-list-table">
       <tr class="item-list-line-item data-row">
         <th>MEETING</th>
-        <% if params[:project_id] %>
+        <% if @project_show %>
         <% else %>
         <th>PROJECT</th>
         <% end %>
@@ -12,13 +12,13 @@
         <th>BEGIN</th>
         <th>END</th>
         <th>ATTENDEES</th>
-        <th>EDIT</th>
-        <th>DESTROY</th>
+        <th><%=image_tag('/assets/edit.png')%></th>
+        <th><%=image_tag('/assets/trash.png')%></th>
       </tr>
         <tr class="spacer-row">
           <th></th>
           <th></th>
-          <% if params[:project_id] %>
+          <% if @project_show %>
           <% else %>
           <th></th>
           <% end %>
@@ -34,7 +34,7 @@
         <tr class="spacer-row">
           <th></th>
           <th></th>
-          <% if params[:project_id] %>
+          <% if @project_show %>
           <% else %>
           <th></th>
           <% end %>
@@ -47,19 +47,19 @@
           <th></th>
         </tr>
         <tr class="item-list-line-item data-row">
-          <td><%= journal.meeting %></td>
-          <% if params[:project_id] %>
+          <td><div class="journal-row center-text"><%= journal.meeting %></div></td>
+          <% if @project_show %>
           <% else %>
-          <td><%= @user.projects.find(journal.project_id).title %></td>
+          <td><div class="journal-row center-text"><%= link_to @projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
           <% end %>
-          <td><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></td>
-          <td><%= journal.body %></td>
-          <td><%= journal.event_date %></td>
-          <td><%= journal.begin_time %></td>
-          <td><%= journal.end_time %></td>
-          <td><%= journal.attendees %></td>
-          <td><%= link_to 'Edit', edit_user_journal_path(@user.displayname, journal) %></td>
-          <td><%= link_to 'Destroy', user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><div class="journal-row"><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></div></td>
+          <td><div class="journal-row"><%= journal.body %></div></td>
+          <td><div class="journal-row center-text"><%= journal.event_date %></div></td>
+          <td><div class="journal-row center-text"><%= journal.begin_time %></div></td>
+          <td><div class="journal-row center-text"><%= journal.end_time %></div></td>
+          <td><div class="journal-row center-text"><%= journal.attendees %></div></td>
+          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_journal_path(@user.displayname, journal) %></div></td>
+          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/trash.png'), user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
         </tr>
   <% end %>
   </table>

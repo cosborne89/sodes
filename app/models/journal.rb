@@ -6,4 +6,8 @@ class Journal < ActiveRecord::Base
   accepts_nested_attributes_for :tasks
 
   before_save { validates_presence_of :project_id }
+
+  def new_record?
+	false
+  end
 end

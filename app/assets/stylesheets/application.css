@@ -76,6 +76,17 @@ h1, h2, p, th, td, a, li {
 	float:left;
 }
 
+.center-text {
+	text-align: center;
+}
+
+.center-vert {
+	margin-top: auto;
+}
+
+.no-margin {
+	margin: 0;
+}
 .sodes-title {
 	display: inline;
 	font-size: .8em;
@@ -126,6 +137,10 @@ h2 {
 	margin: auto;
 }
 
+.content-int p {
+	color: #357fae;
+
+}
 .content-left > a, .content-right > a, .content-title > a, .content-int > a {
 	background-color: #377dae;
 	margin: 5px 0px 0px 0px;
@@ -135,6 +150,8 @@ h2 {
 	text-decoration: none;
 	font-size: .8em;
 }
+
+
 
 .grey-on-blue-link {
 	background-color: #377dae;
@@ -181,6 +198,13 @@ h2 > a {
 	margin: auto;
 	border-spacing: 0;
 	min-width: 100%;
+	font-size: .9em;
+	line-height: 1.5em;
+}
+
+.item-list-table a {
+	text-decoration: none;
+	color: #3b84b7;
 }
 
 .item-list-table tr.data-row th, .item-list-table tr.data-row td {
@@ -214,6 +238,39 @@ h2 > a {
 	height: 1em;
 }
 
+.journal-row {
+	max-height: 4.5em;
+	height: 4.5em;
+	min-height: 4.5em;
+	overflow: hidden;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	position: relative;
+}
+
+.journal-row p {
+	max-width: 100%;
+	min-width: 100%;
+	margin: auto;
+	position: absolute;
+	top: 35%;
+}
+
+.data-row a {
+	margin: 0px;
+}
+
+
+.task-row {
+	max-height: 1.5em;
+	height: 1.5em;
+	min-height: 1.5em;
+	overflow: hidden;
+}
+
+
 /*END INDEX CSS*/
 /*FORM CSS*/
 .form-shell {
@@ -224,4 +281,5 @@ h2 > a {
 	color: #3b84b7;
 	font-family: verdana, arial, helvetica, sans-serif;
 }
+
 /*END FORM CSS*/
