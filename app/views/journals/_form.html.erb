@@ -1,4 +1,4 @@
-<%= form_for(@journal, :url => params[:project_id] ? user_project_journals_path(@user.displayname, params[:project_id]) : user_journals_path(@user.displayname), :method => :post) do |f| %>
+<%= form_for(@journal, :url => user_journals_path(@user.displayname), :method => :post) do |f| %>
   <% if @journal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
