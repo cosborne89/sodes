@@ -39,6 +39,7 @@ class ProjectsController < ApplicationController
   def new
     @user = User.find_by_displayname(params[:user_id])
     @project = @user.projects.new
+    @projects = @user.projects
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,6 +52,7 @@ class ProjectsController < ApplicationController
     if params[:user_id]
       @user = User.find_by_displayname(params[:user_id])
       @project = @user.projects.find(params[:id])
+      @projects = @user.projects
     else
     @project = Project.find(params[:id])
     end

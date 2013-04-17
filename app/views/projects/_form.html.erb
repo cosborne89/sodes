@@ -28,8 +28,12 @@
     <%= f.text_area :common_knowledge %>
   </div>
   <div class="field">
+    <p>TOPLEVEL?</p>
+    <%= f.check_box :toplevel %>
+  </div>
+  <div class="field">
     <p>PARENT</p>
-    <%= f.number_field :parent %>
+    <%= select("project", "parent", @projects.collect {|p| p.title }, {:prompt => true})%>
   </div>
   <div class="field">
     <p>DUE DATE</p>

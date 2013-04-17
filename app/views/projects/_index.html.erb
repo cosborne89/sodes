@@ -6,8 +6,8 @@
     <th>DATE ADDED</th>
     <th>PARENT</th>
     <th>DUE DATE</th>
-    <th>EDIT</th>
-    <th>DESTROY</th>
+    <th><%=image_tag('/assets/edit.png')%></th>
+    <th><%=image_tag('/assets/trash.png')%></th>
   </tr>
     <tr class="spacer-row">
       <th></th>
@@ -35,8 +35,8 @@
         <td><%= project.time.to_date %></td>
         <td><%= project.parent %></td>
         <td><%= project.due_date %></td>
-        <td><%= link_to 'Edit', edit_user_project_path(@user.displayname, project) %></td>
-        <td><%= link_to 'Destroy', user_project_path(@user.displayname, project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_project_path(@user.displayname, project) %></div></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_project_path(@user.displayname, project), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
       </tr>
 <% end %>
 </table>

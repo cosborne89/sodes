@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407194115) do
+ActiveRecord::Schema.define(:version => 20130417164220) do
 
   create_table "journals", :force => true do |t|
     t.boolean  "meeting"
@@ -32,12 +32,14 @@ ActiveRecord::Schema.define(:version => 20130407194115) do
     t.string   "title"
     t.text     "description"
     t.text     "common_knowledge"
-    t.integer  "parent"
+    t.string   "parent"
     t.date     "due_date"
     t.decimal  "budget"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
+    t.string   "longname"
+    t.boolean  "toplevel"
   end
 
   create_table "tasks", :force => true do |t|
