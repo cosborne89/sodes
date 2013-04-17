@@ -9,11 +9,13 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Add validation so that description/title are needed for everything.
 
-- Add AJAX/XML Support through JS.
-
 - Refactor application.css and organize with comments.
 
+<<<<<<< HEAD
 * - Clicking "Save" when Editing an existing creates a new record, probably because of the :method in the :url for the form_for. Occurs on tasks and journals and projects. Solution: put an if statement in the :method in the same manner as in the :url to use the update method instead of the create method. Have to know how to detect if its update or create (should try - it may already be baked in - cf. the button says Update vs Save).
 
 
 - Got the best_in_place gem working by NOT copying the .js file into my vendor/assets but rather just by doing gem install best_in_place.
+=======
+- All#index Add AJAX to replace the checkbox when it is clicked. Needs to have class added.
+>>>>>>> origin/Full-function-no-AJAX-tollgate
