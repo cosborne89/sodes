@@ -12,7 +12,7 @@
 	<h2><%=link_to 'OLDEST TASKS', user_tasks_path(@user.displayname)%></h2>
 	<%=link_to 'NEW', new_user_task_path(@user.displayname)%>
 </div>
-<%#= render 'tasks/index' %>
+<%= render 'tasks/index' %>
 
 <div class="content-title">
 	<h2><%=link_to 'RECENT JOURNALS', user_journals_path(@user.displayname)%></h2>

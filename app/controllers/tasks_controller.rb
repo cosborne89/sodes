@@ -6,10 +6,10 @@ class TasksController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @projects = @user.projects
       if params[:project_id]
-        @tasks = @projects.tasks.where(:complete => false)
+        @tasks = @projects.tasks.all
         @task = @project.tasks.build
       else
-       @tasks = @user.tasks.where(:complete => false)
+       @tasks = @user.tasks.all
        @task = @user.tasks.build
       end
     else
@@ -88,7 +88,7 @@ class TasksController < ApplicationController
     end
     respond_to do |format|
       if @task.save
-        format.html { redirect_to params[:project_id] ? user_project_task_path(@user.displayname, @project, @task) : user_task_path(@user.displayname, @task), notice: 'Task was successfully created.' }
+        format.html { redirect_to params[:project_id] ? user_project_path(@user.displayname, @project) : user_tasks_path(@user.displayname), notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
