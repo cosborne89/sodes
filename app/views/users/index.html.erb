@@ -13,7 +13,7 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= link_to user.name, user_path(user.displayname) %></td>
-    <td><%= user.email %></td>
+    <td><%= best_in_place user, :email %></td>
     <td><%= user.password %></td>
     <td><%= user.premium %></td>
    <td><%= link_to 'Show', user %></td>
