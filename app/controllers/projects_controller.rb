@@ -85,10 +85,16 @@ class ProjectsController < ApplicationController
     else
       @project = Project.find(params[:id])
     end
-
+    @project.update_attributes(params[:project])
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to user_project_path(@user.displayname, @project), notice: 'Project was successfully updated.' }
+        format.html { 
+          if request.xhr?
+            render :text => params[:project].values.first
+          else
+            redirect_to(user_projects_url(@user.displayname), notice: 'Project was successfully updated.')
+          end
+         }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
