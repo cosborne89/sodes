@@ -6,14 +6,14 @@ class TasksController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @projects = @user.projects
       if params[:project_id]
-        @tasks = @projects.tasks.all
+        @tasks = @projects.tasks.order(params[:sort])
         @task = @project.tasks.build
       else
-       @tasks = @user.tasks.all
+       @tasks = @user.tasks.order(params[:sort])
        @task = @user.tasks.build
       end
     else
-      @tasks = Task.all
+      @tasks = Task.all.order(params[:sort])
       @task = Task.build
     end
 
@@ -127,6 +127,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_tasks_url }
       format.json { head :no_content }
+      format.js {render :nothing => true}
     end
   end
 end

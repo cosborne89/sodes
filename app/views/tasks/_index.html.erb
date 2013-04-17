@@ -2,14 +2,13 @@
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
       <th><%=image_tag('/assets/star.png')%></th>
-      <th>ACTIVE</th>
       <th><%=image_tag('/assets/checkfill.png')%></th>
       <% if @project_show %>
       <% else %>
       <th>PROJECT</th>
       <% end %>
-      <th>DESCRIPTION</th>
-      <th>CONTACT</th>
+      <th><%= link_to "DESCRIPTION", :sort => "description" %></th>
+      <th><%= link_to "CONTACT", :sort => "contact" %></th>
       <th><%=image_tag('/assets/edit.png')%></th>
       <th><%=image_tag('/assets/trash.png')%></th>
     </tr>
@@ -20,7 +19,6 @@
         <% else %>
         <th></th>
         <% end %>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -38,12 +36,10 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
-      <td><div class="task-row center-text"><%= task.priority %></div></td>
-      <td><div class="task-row center-text"><%= task.active %></div></td>
-      <td><div class="task-row center-text"><%= task.complete %></div></td>
+      <td><div class="task-row center-text"><%= task.priority ? image_tag('/assets/checkfill.png') : image_tag('/assets/checkempty.png') %></div></td>
+      <td><div class="task-row center-text"><%= task.complete ? image_tag('/assets/checkfill.png') : image_tag('/assets/checkempty.png') %></div></td>
       <% if @project_show %>
       <% else %>
         <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
@@ -51,7 +47,7 @@
       <td><div class="task-row"><%= link_to task.description, user_task_path(@user.displayname, task) %></div></td>
       <td><div class="task-row center-text"><%= task.contact %></div></td>
       <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
     </tr>
 <% end %>
 </table>

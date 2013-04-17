@@ -59,7 +59,7 @@
           <td><div class="journal-row center-text"><%= journal.end_time %></div></td>
           <td><div class="journal-row center-text"><%= journal.attendees %></div></td>
           <td><div class="journal-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_journal_path(@user.displayname, journal) %></div></td>
-          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/trash.png'), user_journal_path(@user.displayname, journal), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/trash.png'), user_journal_path(@user.displayname, journal), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
         </tr>
   <% end %>
   </table>
