@@ -1,9 +1,14 @@
 <div class="item-list-container">
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
+<<<<<<< HEAD
       <th><%= link_to image_tag('/assets/star.png'), :sort => "priority"%></th>
       <th><%= link_to "ACTIVE", :sort => "priority"%></th>
       <th><%= link_to image_tag('/assets/checkfill.png'), :sort => "complete"%></th>
+=======
+      <th><%=image_tag('/assets/star.png')%></th>
+      <th><%=image_tag('/assets/checkfill.png')%></th>
+>>>>>>> ff0e199479193a3a03d0d3da3468af990b62fdff
       <% if @project_show %>
       <% else %>
       <th>PROJECT</th>
@@ -39,9 +44,14 @@
       <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
+<<<<<<< HEAD
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
+=======
+      <td><div class="task-row center-text"><%= task.priority ? image_tag('/assets/checkfill.png') : image_tag('/assets/checkempty.png') %></div></td>
+      <td><div class="task-row center-text"><%= task.complete ? image_tag('/assets/checkfill.png') : image_tag('/assets/checkempty.png') %></div></td>
+>>>>>>> origin/Full-function-no-AJAX-tollgate
       <% if @project_show %>
       <% else %>
         <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
