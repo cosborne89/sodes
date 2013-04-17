@@ -41,9 +41,9 @@
       <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
-      <td><div class="task-row center-text"><%= task.priority %></div></td>
-      <td><div class="task-row center-text"><%= task.active %></div></td>
-      <td><div class="task-row center-text"><%= task.complete %></div></td>
+      <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
+      <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
+      <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
       <% if @project_show %>
       <% else %>
         <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>

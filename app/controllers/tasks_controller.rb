@@ -6,10 +6,10 @@ class TasksController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @projects = @user.projects
       if params[:project_id]
-        @tasks = @projects.tasks.all
+        @tasks = @projects.tasks.where(:complete => false)
         @task = @project.tasks.build
       else
-       @tasks = @user.tasks.all
+       @tasks = @user.tasks.where(:complete => false)
        @task = @user.tasks.build
       end
     else
