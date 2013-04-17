@@ -124,6 +124,7 @@ class JournalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_journals_url }
       format.json { head :no_content }
+      format.js {render :nothing => true}
     end
   end
 end

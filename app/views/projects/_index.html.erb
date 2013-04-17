@@ -30,13 +30,13 @@
       <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
-        <td><%= link_to project.title, user_project_path(@user.displayname, project) %></td>
-        <td><%= project.description %></td>
-        <td><%= project.time.to_date %></td>
-        <td><%= project.parent %></td>
-        <td><%= project.due_date %></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_project_path(@user.displayname, project) %></div></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_project_path(@user.displayname, project), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+        <td><div class="task-row"><%= link_to project.title, user_project_path(@user.displayname, project) %></div></td>
+        <td><div class="task-row"><%= project.description %></div></td>
+        <td><div class="task-row"><%= project.time.to_date %></div></td>
+        <td><div class="task-row"><%= project.parent %></div></td>
+        <td><div class="task-row"><%= project.due_date %></div></td>
+        <td><div class="task-row"><%= link_to image_tag('/assets/edit.png'), edit_user_project_path(@user.displayname, project) %></div></td>
+        <td><div class="task-row"><%= link_to image_tag('/assets/trash.png'), user_project_path(@user.displayname, project), method: :delete, :remote => true, :class => 'delete_object', data: { confirm: 'Are you sure?' } %></div></td>
       </tr>
 <% end %>
 </table>

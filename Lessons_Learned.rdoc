@@ -1,0 +1,1 @@
+- Got the best_in_place gem working by NOT copying the .js file into my vendor/assets but rather just by doing gem install best_in_place.

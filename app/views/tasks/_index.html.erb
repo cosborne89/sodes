@@ -1,15 +1,15 @@
 <div class="item-list-container">
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
-      <th><%=image_tag('/assets/star.png')%></th>
-      <th>ACTIVE</th>
-      <th><%=image_tag('/assets/checkfill.png')%></th>
+      <th><%= link_to image_tag('/assets/star.png'), :sort => "priority"%></th>
+      <th><%= link_to "ACTIVE", :sort => "priority"%></th>
+      <th><%= link_to image_tag('/assets/checkfill.png'), :sort => "complete"%></th>
       <% if @project_show %>
       <% else %>
       <th>PROJECT</th>
       <% end %>
-      <th>DESCRIPTION</th>
-      <th>CONTACT</th>
+      <th><%= link_to "DESCRIPTION", :sort => "description" %></th>
+      <th><%= link_to "CONTACT", :sort => "contact" %></th>
       <th><%=image_tag('/assets/edit.png')%></th>
       <th><%=image_tag('/assets/trash.png')%></th>
     </tr>
@@ -20,7 +20,6 @@
         <% else %>
         <th></th>
         <% end %>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -38,7 +37,6 @@
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
@@ -51,7 +49,7 @@
       <td><div class="task-row"><%= best_in_place [@user, task], :description %></div></td>
       <td><div class="task-row center-text"><%= task.contact %></div></td>
       <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
     </tr>
 <% end %>
 </table>

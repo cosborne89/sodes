@@ -9,11 +9,17 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Add validation so that description/title are needed for everything.
 
-- Add AJAX/XML Support through JS.
-
 - Refactor application.css and organize with comments.
 
-* - Clicking "Save" when Editing an existing creates a new record, probably because of the :method in the :url for the form_for. Occurs on tasks and journals and projects. Solution: put an if statement in the :method in the same manner as in the :url to use the update method instead of the create method. Have to know how to detect if its update or create (should try - it may already be baked in - cf. the button says Update vs Save).
+- Quick Add Task has to submit AJAX-ially
 
+- Sort has to go up and down, watch the railscasts video. Default to the logical direction (true for active, false for complete)
 
-- Got the best_in_place gem working by NOT copying the .js file into my vendor/assets but rather just by doing gem install best_in_place.
+- Sort w/ hide per original wireframe layout (active : snoozed : closed)
+
+- Add jquery to Project#New so parent only an option if Toplevel is checked.
+
+- Pass the sort parameter into the link for journals vs meetings.
+
+- Enable sorting on journals vs meetings for viewing all.
+
