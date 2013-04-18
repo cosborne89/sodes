@@ -112,15 +112,10 @@ h1, h2, p, th, td, a, li {
 	padding: 5px 2px;
 	margin: 0;
 	line-height: 35px;
-	width: 100px;
 }
 
 .banner-object {
-	display: inline;
-}
-
-.hidden {
-	display: none;
+	display: inline-block;
 }
 
 .banner-object-parent {
@@ -133,7 +128,6 @@ h1, h2, p, th, td, a, li {
 	background: linear-gradient(to bottom, #7db9e8 27%,#377dae 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#377dae',GradientType=0 ); /* IE6-9 */
 	margin: 0px;
-	width: 8%;
 	text-align: center;
 	height: 35px;
 	top: 0;
@@ -146,11 +140,14 @@ h1, h2, p, th, td, a, li {
 
 .banner-object-child {
 	margin: 0px;
-	width: 3%;
 	text-align: center;
 	top: 0;
 	padding: 0px;
-	display: inline-block;
+	display: none;
+}
+
+.disp-inline {
+	display: inline-block!important;
 }
 
 
