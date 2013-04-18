@@ -16,9 +16,3 @@
 //= require best_in_place
 //= require_tree .
 
-$(document).ready(function() {
-$('.delete_object').bind('ajax:success', function() {  
-    $(this).closest('tr').fadeOut();
-    $(this).before('.spacer-row').fadeOut(); //This needs to go to the spacer-row ABOVE it, not just the closest  
-});  
-});

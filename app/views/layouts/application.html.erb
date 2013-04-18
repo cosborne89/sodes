@@ -9,26 +9,23 @@
 <body>
 	<div id="top-banner" class="banner">
 		<div class="banner-inner">
-			<ul>
-				<li class="sodes-title">SODES</li>
-				<li class="banner-text bold">Quick Links:</li>
-				<li class="banner-text">|</li>
-				<li class="banner-text">Projects:</li>
-				<li class="banner-link"><%= link_to "ALL", user_projects_path(@user.displayname) %></li>
-				<li class="banner-link"><%= link_to "NEW", new_user_project_path(@user.displayname) %></li>
-				<li class="banner-text">|</li>
-				<li class="banner-text">Tasks:</li>
-				<li class="banner-link"><%= link_to "ALL", user_tasks_path(@user.displayname) %></li>
-				<li class="banner-link"><%= link_to "NEW", new_user_task_path(@user.displayname) %></li>
-				<li class="banner-text">|</li>
-				<li class="banner-text">Journals:</li>
-				<li class="banner-link"><%= link_to "ALL", user_journals_path(@user.displayname) %></li>
-				<li class="banner-link"><%= link_to "NEW", new_user_journal_path(@user.displayname) %></li>
-				<li class="banner-text">|</li>
-				<li class="banner-text">Meetings:</li>
-				<li class="banner-link"><%= link_to "ALL", user_journals_path(@user.displayname) %></li>
-				<li class="banner-link"><%= link_to "NEW", new_user_journal_path(@user.displayname) %></li>
-			</ul>
+				<p class="sodes-title">SODES</p>
+				<div class="banner-object">
+					<div class="banner-object-parent"><p class="banner-text">Projects:</p></div>
+					<div class="banner-object-child"><p class="banner-text"><%= link_to "All", user_projects_path(@user.displayname) %></p><p class="banner-text"><%= link_to "New", new_user_project_path(@user.displayname) %></p></div>
+				</div>
+				<div class="banner-object">
+					<div class="banner-object-parent"><p class="banner-text">Tasks:</p></div>
+					<div class="banner-object-child"><p class="banner-text"><%= link_to "All", user_tasks_path(@user.displayname) %></p><p class="banner-text"><%= link_to "New", new_user_task_path(@user.displayname) %></p></div>
+				</div>
+				<div class="banner-object">
+					<div class="banner-object-parent"><p class="banner-text">Journals:</p></div>
+					<div class="banner-object-child"><p class="banner-text"><%= link_to "All", user_journals_path(@user.displayname) %></p><p class="banner-text"><%= link_to "New", new_user_journal_path(@user.displayname) %></p></div>
+				</div>
+				<div class="banner-object">
+					<div class="banner-object-parent"><p class="banner-text">Meetings:</p></div>
+					<div class="banner-object-child"><p class="banner-text"><%= link_to "All", user_journals_path(@user.displayname) %></p><p class="banner-text"><%= link_to "New", new_user_journal_path(@user.displayname) %></p></div>
+				</div>
 			<p class="banner-link right-align"><%= link_to @user.displayname.upcase, user_path(@user.displayname) %></p>
 			<p class="banner-text right-align">|</p>
 			<p class="banner-link right-align"><%= link_to 'Settings', edit_user_path(@user) %></p>

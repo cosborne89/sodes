@@ -28,3 +28,5 @@ Checklist.rdoc (see git history for checked off tasks)
 - Implement updating without reloading per railscast.
 
 - JQuery for links: Click once shows button to "Go" and click text again edits field.
+
+- Formatting - Gradiant buttons along the top with a bar to indicate which one you're on. Hover dropdown to add new.

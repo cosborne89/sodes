@@ -5,9 +5,9 @@ class Project < ActiveRecord::Base
   belongs_to :user, :foreign_key => "user_id"
   attr_accessible :budget, :common_knowledge, :description, :due_date, :parent, :time, :title, :user_id, :longname, :toplevel
   validates_presence_of :title
-  before_save :concatenate_longname
+  before_save :concatenate_title
 
-  def concatenate_longname
+  def concatenate_title
   	if self.toplevel == false
   		self.title = "#{parent} > #{title}"
   	else

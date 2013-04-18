@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
             redirect_to(user_projects_url(@user.displayname), notice: 'Project was successfully updated.')
           end
          }
-        format.json { render :nothing => true }
+        format.json { render head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
