@@ -21,8 +21,10 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Pass the sort parameter into the link for journals vs meetings.
 
-
 - Enable sorting on journals vs meetings for viewing all.
 
+- Edit Destroy Jquery to delete the spacer-row, too.
 
-- All#index Add AJAX to replace the checkbox when it is clicked. Needs to have class added.
+- Implement updating without reloading per railscast.
+
+- JQuery for links: Click once shows button to "Go" and click text again edits field.

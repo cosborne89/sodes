@@ -16,7 +16,7 @@
 <div class="content-left">
   <div class="content-title">
     <h2><%=link_to 'TASKS', user_tasks_path(@user.displayname)%></h2>
-    <%=link_to 'NEW', new_user_project_task_path(@user.displayname, @project)%>
+    <%=link_to 'NEW', new_user_task_path(@user.displayname)%>
   </div>
    <%= render 'tasks/index' %>
   <div class="content-title">

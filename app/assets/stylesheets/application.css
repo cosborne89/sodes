@@ -55,7 +55,7 @@ h1, h2, p, th, td, a, li {
 }
 
 .banner .banner-link a, .banner p a {
-	background-color: #d8d8d8;
+	background-color: #f2f2f2;
 	margin: 0;
 	padding: 4px;
 	border-radius: 4px;
@@ -91,7 +91,7 @@ h1, h2, p, th, td, a, li {
 	display: inline;
 	font-size: .8em;
 	font-weight: bold;
-	background-color: #d8d8d8;
+	background-color: #f2f2f2;
 	border-radius: 8px;
 	color: #377dae;
 	padding: 5px 10px;
@@ -100,7 +100,7 @@ h1, h2, p, th, td, a, li {
 .banner-text {
 	display: inline;
 	font-size: .9em;
-	color: #d8d8d8;
+	color: #f2f2f2;
 	padding: 5px 2px;
 	margin: 0;
 	padding: 0;
@@ -146,7 +146,7 @@ h2 {
 	margin: 5px 0px 0px 0px;
 	padding: 4px;
 	border-radius: 4px;
-	color: #d8d8d8;
+	color: #f2f2f2;
 	text-decoration: none;
 	font-size: .8em;
 }
@@ -157,7 +157,7 @@ h2 {
 	background-color: #377dae;
 	margin: 0px;
 	border-radius: 4px;
-	color: #d8d8d8;
+	color: #f2f2f2;
 	text-decoration: none;
 	font-size: .7em;
 	padding: 4px;
