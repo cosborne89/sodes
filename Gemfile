@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'best_in_place'
 gem 'jquery-ui-rails'
+gem 'ransack'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

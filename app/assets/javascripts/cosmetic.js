@@ -6,8 +6,18 @@ $('.banner-object').mouseenter(function() {
 	$(this).children('.banner-object-child').css("display", "inline-block");
 });
 $('.banner-object').mouseleave(function() {
-		$(this).children('.banner-object-child').toggle(400);
-		$(this).children('.banner-object-child').css("display", "none");
+		$(this).children('.banner-object-child').toggle(400, function() {
+			$(this).children('.banner-object-child').css("display", "none");
+		});
+		
+});
+
+
+//Sort/Filter Tasks 
+$('#tasks th a, #tasks ul li').click( function() {
+	$.getScript("tasks");
+	return false;
+//	
 });
 
 //document.ready closing tag

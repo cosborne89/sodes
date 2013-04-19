@@ -1,9 +1,31 @@
+  <ul class="filter-nav">
+    <li>Filter:</li>
+    <li>
+      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+        <%= f.hidden_field :complete_eq, :value => false %>
+        <%= f.hidden_field :active_eq, :value => true %>
+        <%= f.submit "Open"%>
+      <% end %>
+    </li>
+    <li>   
+      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+        <%= f.hidden_field :active_eq, :value => false %>
+        <%= f.submit "Inactive"%>
+      <% end %>
+    </li>
+    <li>   
+      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+        <%= f.hidden_field :complete_eq, :value => true %>
+        <%= f.submit "Closed"%>
+      <% end %>
+    </li>
+  </ul>
 <div class="item-list-container">
   <table class="item-list-table">
     <tr class="item-list-line-item data-row">
-      <th><%= link_to image_tag('/assets/star.png'), :sort => "priority"%></th>
-      <th><%= link_to "ACTIVE", :sort => "priority"%></th>
-      <th><%= link_to image_tag('/assets/checkfill.png'), :sort => "complete"%></th>
+      <th><%= sort_link(@search, :priority, image_tag('/assets/star.png'))%></th>
+      <th><%= sort_link(@search, :active, "ACTIVE")%></th>
+      <th><%= sort_link(@search, :complete, image_tag('/assets/checkfill.png'))%></th>
       <% if @project_show %>
       <% else %>
       <th>PROJECT</th>
@@ -39,7 +61,7 @@
       <th></th>
     </tr>
     <tr class="item-list-line-item data-row">
-      <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
+      <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/empty.png'), image_tag('/assets/star.png')] %></div></td>
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
       <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
       <% if @project_show %>

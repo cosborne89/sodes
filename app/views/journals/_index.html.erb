@@ -1,7 +1,7 @@
 <div class="item-list-container">
   <table class="item-list-table">
       <tr class="item-list-line-item data-row">
-        <th>MEETING</th>
+        <th><%= image_tag('/assets/mtgjrnal.png')%></th>
         <% if @project_show %>
         <% else %>
         <th>PROJECT</th>
@@ -47,7 +47,7 @@
           <th></th>
         </tr>
         <tr class="item-list-line-item data-row">
-          <td><div class="journal-row center-text"><%= journal.meeting %></div></td>
+          <td><div class="journal-row center-text"><%= best_in_place [@user, journal], :meeting, :type => :checkbox, :collection => [image_tag('/assets/journal.png'), image_tag('/assets/meeting.png')] %></div></td>
           <% if @project_show %>
           <% else %>
           <td><div class="journal-row center-text"><%= link_to @user.projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
