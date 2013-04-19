@@ -64,12 +64,13 @@ h1, h2, p, th, td, a, li {
 
 .banner .banner-link a, .banner p a {
 	background-color: #f2f2f2;
-	margin: 0;
+	margin: 3px;
 	padding: 4px;
 	border-radius: 4px;
 	color: #377dae;
 	text-decoration: none;
 	font-size: .8em;
+	width: 3em;
 }
 
 .clear-shell {
@@ -110,7 +111,7 @@ h1, h2, p, th, td, a, li {
 	font-size: .9em;
 	color: #f2f2f2;
 	padding: 5px 2px;
-	margin: 0;
+	margin: 3px;
 	line-height: 35px;
 }
 
@@ -136,6 +137,7 @@ h1, h2, p, th, td, a, li {
 	border-left: 1px solid #2d6798;
 	border-right: 1px solid #2d6798;
 	display: inline-block;
+	width: 10em;
 }
 
 .banner-object-child {
@@ -144,10 +146,7 @@ h1, h2, p, th, td, a, li {
 	top: 0;
 	padding: 0px;
 	display: none;
-}
-
-.disp-inline {
-	display: inline-block!important;
+	width: 7.5em;
 }
 
 

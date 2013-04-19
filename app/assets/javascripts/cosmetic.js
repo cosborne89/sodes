@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
-//Function to unhide All/New when you mouse over a banner object
-$( '.banner-object-parent' ).mouseenter(function() {
-  $(this).next('.banner-object-child').toggleClass('.disp-inline', "add");
-   $(this).next('.banner-object-child').toggle( "slide", 200 );
-
+//Function to unhide/hide All/New when you mouse over a banner object
+$('.banner-object').mouseenter(function() {
+	$(this).children('.banner-object-child').toggle(400);
+	$(this).children('.banner-object-child').css("display", "inline-block");
 });
-$( '.banner-object-parent' ).mouseleave(function() {
-  $(this).children('.banner-object-child').toggle( "blind", 200 );
+$('.banner-object').mouseleave(function() {
+		$(this).children('.banner-object-child').toggle(400);
+		$(this).children('.banner-object-child').css("display", "none");
 });
 
-//document.ready closing tag1
+//document.ready closing tag
 });
