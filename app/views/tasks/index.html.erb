@@ -1,9 +1,2 @@
 <h1>TASK LIST</h1>
-<div id="tasks">
 <%= render 'tasks/index' %>	
-</div>
-<br />
-<h2>QUICK ADD:</h2>
-<%= render 'tasks/form' %>
-<br />	
-<%= link_to 'New Task', new_user_task_path(@user.displayname) %>

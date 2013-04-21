@@ -16,8 +16,10 @@ class UsersController < ApplicationController
   def show
       @user = User.find_by_displayname(params[:id])
       @projects = @user.projects.find(:all, :limit => 5, :order => 'updated_at desc')
-      @tasks = @user.tasks.find(:all, :limit =>5, :order => 'created_at asc')
       @journals = @user.journals.find(:all, :limit => 5, :order => 'updated_at desc')
+      @searchtask = @user.tasks.search(params[:q])
+      @tasks = @searchtask.result.where(:active => true, :complete => false).limit(5)
+      @task = @user.tasks.build
 
     respond_to do |format|
       format.html # show.html.erb

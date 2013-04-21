@@ -6,17 +6,17 @@ class TasksController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @projects = @user.projects
       if params[:project_id]
-        @search = @projects.tasks.search(params[:q])
-        @tasks = @search.result
+        @searchtask = @projects.tasks.search(params[:q])
+        @tasks = @searchtask.result
         @task = @project.tasks.build
       else
-        @search = @user.tasks.search(params[:q])
-        @tasks = @search.result
+        @searchtask = @user.tasks.search(params[:q])
+        @tasks = @searchtask.result
         @task = @user.tasks.build
       end
     else
-      @search = Task.search(params[:q])
-      @tasks = @search.result
+      @searchtask = Task.search(params[:q])
+      @tasks = @searchtask.result
       @task = Task.build
     end
 

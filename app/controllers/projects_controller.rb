@@ -22,9 +22,13 @@ class ProjectsController < ApplicationController
       @user = User.find_by_displayname(params[:user_id])
       @projects = @user.projects
       @project = @user.projects.find(params[:id])
-      @tasks = @project.tasks
       @journals = @project.journals
       @project_show = 1
+      @searchtask = @project.tasks.search(params[:q])
+      @tasks = @searchtask.result
+      @task = @user.tasks.build
+      @project_title = @user.projects.find(params[:id]).title
+      @project_for_new = @user.projects.find(params[:id]).id
     else
       @project = Project.find(params[:id])
     end

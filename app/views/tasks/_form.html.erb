@@ -10,18 +10,6 @@
       </ul>
     </div>
   <% end %>
-<div class="item-list-container">
-<table class="item-list-table">
-    <tr class="item-list-line-item data-row">
-      <th>PRIORITY</th>
-      <th>ACTIVE</th>
-      <th>COMPLETE</th>
-      <th>PROJECT</th>
-      <th>DESCRIPTION</th>
-      <th>DUE</th>
-      <th>CONTACT</th>
-      <th>SAVE</th>
-    </tr>
     <tr class="spacer-row">
         <th></th>
         <th></th>
@@ -33,23 +21,19 @@
         <th></th>
         <th></th>
       </tr>
-  <tr class="field">
-    <td><%= f.check_box :priority %></td>
-    <td><%= f.check_box :active %></td>
-    <td><%= f.check_box :complete %></td>
-    <td>    <% if params[:project_id] %>  
-    <%= f.label @project_title %>
-    <%= f.hidden_field :project_id, :value => params[:project_id] %>
-    <% else %>
-    <%#= collection_select(:task, :project_id, @projects, :id, :title, {:prompt => true}) %>
-    <%= select("task", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false})%>
-    <% end %></td>
+  <tr class="field data-row item-list-line-item">
+    <td class="center-text"><%= f.check_box :priority %></td>
+    <td class="center-text"><%= f.check_box :complete %></td>
+      <% if @project_show %>  
+        <%= f.hidden_field :project_id, :value => @project_for_new %>
+        <% else %>
+        <td class="center-text">
+          <%= select("task", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false}, :class => "my-class")%>
+        </td>
+      <% end %>
     <td><%= f.text_field :description %></td>
-    <td><%= f.datetime_select :due_date %></td>
     <td><%= f.text_field :contact %></td>
-
-    <td class="actions"><%= f.submit "Save Task" %></td>
+    <td class="center-text"><%= f.check_box :active, :checked => true%></td>
+    <td class="actions center-text" colspan="2"><%= f.submit "Save Task" %></td>
   </tr>
-</table>
-</div>
 <% end %>

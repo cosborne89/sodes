@@ -1,41 +1,43 @@
+
+<div class="item-list-container tasks-container">
   <ul class="filter-nav">
     <li>Filter:</li>
     <li>
-      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-open"}) do |f| %>
         <%= f.hidden_field :complete_eq, :value => false %>
         <%= f.hidden_field :active_eq, :value => true %>
         <%= f.submit "Open"%>
       <% end %>
     </li>
     <li>   
-      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-inactive"}) do |f| %>
         <%= f.hidden_field :active_eq, :value => false %>
         <%= f.submit "Inactive"%>
       <% end %>
     </li>
     <li>   
-      <%= search_form_for(@search, :url => user_tasks_url) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-closed"}) do |f| %>
         <%= f.hidden_field :complete_eq, :value => true %>
         <%= f.submit "Closed"%>
       <% end %>
     </li>
   </ul>
-<div class="item-list-container">
   <table class="item-list-table">
-    <tr class="item-list-line-item data-row">
-      <th><%= sort_link(@search, :priority, image_tag('/assets/star.png'))%></th>
-      <th><%= sort_link(@search, :active, "ACTIVE")%></th>
-      <th><%= sort_link(@search, :complete, image_tag('/assets/checkfill.png'))%></th>
-      <% if @project_show %>
-      <% else %>
-      <th>PROJECT</th>
-      <% end %>
-      <th><%= link_to "DESCRIPTION", :sort => "description" %></th>
-      <th><%= link_to "CONTACT", :sort => "contact" %></th>
-      <th><%=image_tag('/assets/edit.png')%></th>
-      <th><%=image_tag('/assets/trash.png')%></th>
-    </tr>
-    <tr class="spacer-row">
+    <div id="task-index">
+      <tr class="item-list-line-item data-row">
+        <th><%= sort_link(@searchtask, :priority, image_tag('/assets/star.png'))%></th>
+        <th><%= sort_link(@searchtask, :complete, image_tag('/assets/checkfill.png'))%></th>
+        <% if @project_show %>
+        <% else %>
+        <th><%= sort_link(@searchtask, :project_id, "PROJECT")%></th>
+        <% end %>
+        <th><%= link_to "DESCRIPTION", :sort => "description" %></th>
+        <th><%= link_to "CONTACT", :sort => "contact" %></th>
+        <th><%= sort_link(@searchtask, :active, image_tag('/assets/inactive.png'))%></th>
+        <th><%=image_tag('/assets/edit.png')%></th>
+        <th><%=image_tag('/assets/trash.png')%></th>
+      </tr>
+      <tr class="spacer-row">
         <th></th>
         <th></th>
         <% if @project_show %>
@@ -46,33 +48,37 @@
         <th></th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
-<% @tasks.each do |task| %>
-    <tr class="spacer-row">
-      <th></th>
-      <th></th>
-      <th></th>
-      <% if @project_show %>
-      <% else %>
-      <th></th>
+      <% @tasks.each do |task| %>
+        <tr class="spacer-row">
+          <th></th>
+          <th></th>
+          <% if @project_show %>
+          <% else %>
+          <th></th>
+          <% end %>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr class="item-list-line-item data-row">
+          <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/empty.png'), image_tag('/assets/star.png')] %></div></td>
+          <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
+          <% if @project_show %>
+          <% else %>
+            <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
+          <% end %>
+          <td><div class="task-row"><%= best_in_place [@user, task], :description %></div></td>
+          <td><div class="task-row center-text"><%= task.contact %></div></td>
+          <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/inactive.png'), image_tag('/assets/empty.png')] %></div></td>
+          <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
+          <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
+        </tr>
       <% end %>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr class="item-list-line-item data-row">
-      <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/empty.png'), image_tag('/assets/star.png')] %></div></td>
-      <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
-      <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
-      <% if @project_show %>
-      <% else %>
-        <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
-      <% end %>
-      <td><div class="task-row"><%= best_in_place [@user, task], :description %></div></td>
-      <td><div class="task-row center-text"><%= task.contact %></div></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
-      <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
-    </tr>
-<% end %>
+    </div>
+<%= render 'tasks/form' %> 
+
 </table>
 </div>

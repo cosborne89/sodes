@@ -244,8 +244,9 @@ h2 > a {
 /*INDEX CSS*/
 .filter-nav {
 	list-style-type: none;
-	display: inline-block;
-	padding-left: 5px;
+	display: inline;
+	float:right;
+	margin-bottom: .7em;
 }
 
 .filter-nav li {
@@ -255,9 +256,17 @@ h2 > a {
 	font-size: .8em;
 }
 
+.inline-form {
+	display: inline;
+
+}
 .item-list-container {
 	background-color: #ffffff;
 	padding: 2em;
+}
+
+.tasks-container {
+	padding-top: .6em;
 }
 
 .item-list-table {
