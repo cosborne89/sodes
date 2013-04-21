@@ -25,13 +25,13 @@
   <table class="item-list-table">
     <div id="task-index">
       <tr class="item-list-line-item data-row">
-        <th><%= sort_link(@searchtask, :priority, image_tag('/assets/star.png'))%></th>
+        <th><%= sort_link(@searchtask, :priority, image_tag('/assets/star.png'), :remote => true) %></th>
         <th><%= sort_link(@searchtask, :complete, image_tag('/assets/checkfill.png'))%></th>
         <% if @project_show %>
         <% else %>
-        <th><%= sort_link(@searchtask, :project_id, "PROJECT")%></th>
+          <th><%= sort_link(@searchtask, :project_id, "PROJECT")%></th>
         <% end %>
-        <th><%= link_to "DESCRIPTION", :sort => "description" %></th>
+        <th><%= sort_link(@searchtask, :description, "DESCRIPTION") %></th>
         <th><%= link_to "CONTACT", :sort => "contact" %></th>
         <th><%= sort_link(@searchtask, :active, image_tag('/assets/inactive.png'))%></th>
         <th><%=image_tag('/assets/edit.png')%></th>
@@ -78,7 +78,6 @@
         </tr>
       <% end %>
     </div>
-<%= render 'tasks/form' %> 
-
-</table>
+   <%= render 'tasks/form' %> 
+  </table>
 </div>

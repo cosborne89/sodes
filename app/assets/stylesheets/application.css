@@ -38,7 +38,6 @@ h1 {
 .banner {
 	margin: 0px;
 	width: 100%;
-	top: 0;
 	line-height: 35px;
 	/*Background Definition from http://www.colorzilla.com/gradient-editor/ */
 	background: #52a5ea; /* Old browsers */
@@ -53,6 +52,18 @@ h1 {
 	border: 1px solid #2d6798;
 }
 
+.banner p {
+	margin: 0px;
+}
+#top-banner {
+	top: 0;
+}
+
+#bottom-banner {
+	position: absolute;
+	bottom: 0;
+	color: #f2f2f2;
+}
 .banner-inner {
 	margin-left: 12.5%;
 	width: 75%;

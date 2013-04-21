@@ -14,8 +14,13 @@ $('.banner-object').mouseleave(function() {
 
 
 //Sort/Filter Tasks 
-$('#tasks th a, #tasks ul li').click( function() {
-	$.getScript("tasks");
+$('form[data-remote]').click( function() {
+	$.getScript(this.href);
+	return false;
+//	
+});
+$('a[data-remote]').click( function() {
+	$.getScript(this.href);
 	return false;
 //	
 });
