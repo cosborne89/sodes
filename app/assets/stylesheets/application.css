@@ -279,7 +279,7 @@ h2 > a {
 	display: inline;
 
 }
-.item-list-container {
+.content-int > .item-list-container {
 	background-color: #ffffff;
 	padding: 2em;
 	position: absolute;
@@ -290,7 +290,23 @@ h2 > a {
 	width: 71.5%;
 }
 
-.tasks-container {
+.content-left > .item-list-container {
+	background-color: #ffffff;
+	padding: 2em;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 95%;
+}
+
+.content-right > .item-list-container {
+	background-color: #ffffff;
+	padding: 2em;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 95%;
+}
+
+.content-left > .tasks-container, .content-int > .tasks-container {
 	padding-top: .6em;
 }
 
