@@ -21,6 +21,7 @@ html {
 
 body {
 	min-height: 100%;
+	overflow-x: hidden;
 }
 h1, h2, p, th, td, a, li {
 	margin: 8px;
@@ -61,6 +62,7 @@ h1 {
 
 #bottom-banner {
 	position: absolute;
+	top: auto;
 	bottom: 0;
 	color: #f2f2f2;
 }
@@ -175,9 +177,9 @@ h1 {
 h1 {
 	margin-top: 0px;
 	margin-bottom: 0px;
-	padding-top: 15px;
+	padding-top: -3px;
 	color: #347ea7;
-	display: inline-block;
+	display: inline;
 }
 
 .content-title {
@@ -196,6 +198,12 @@ h2 {
 
 .content-shell {
 	background-color: #f2f2f2;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	position: absolute;
+	top: 3em;
+	bottom: 4em;
 }
 
 .content-int {
@@ -274,6 +282,12 @@ h2 > a {
 .item-list-container {
 	background-color: #ffffff;
 	padding: 2em;
+	position: absolute;
+	bottom: 5em;
+	top: 3.5em;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	width: 71.5%;
 }
 
 .tasks-container {
