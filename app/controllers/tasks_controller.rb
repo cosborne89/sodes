@@ -8,12 +8,12 @@ class TasksController < ApplicationController
     if params[:project_id]
       @searchtask = @project.tasks.search(params[:q])
       @tasks = @searchtask.result
-      @tasks = @projects.tasks.where(:active => true, :complete => false) unless params[:q]
+      @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
       @task = @project.tasks.build
     else
       @searchtask = @user.tasks.search(params[:q])
       @tasks = @searchtask.result
-      @tasks = @user.tasks.where(:active => true, :complete => false) unless params[:q]
+      @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
       @task = @user.tasks.build
     end
     #render :partial => 'index' DOES AJAX WITH NO FORMATTING.

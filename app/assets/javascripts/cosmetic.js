@@ -13,13 +13,5 @@ $('.banner-object').mouseleave(function() {
 });
 
 
-//Sort/Filter Tasks 
-//$('form[data-remote]').click( function() {
-//	$.getScript(this.href);
-//	return false;
-//	
-//});
-
-
 //document.ready closing tag
 });
