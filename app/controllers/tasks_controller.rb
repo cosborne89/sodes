@@ -29,8 +29,12 @@ class TasksController < ApplicationController
       @tasks = @searchtask.result
       @task = Task.build
     end
-
-    respond_with @tasks
+    #render :partial => 'index' DOES AJAX WITH NO FORMATTING.
+#    respond_with @tasks
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
   end
 
   # GET /tasks/1

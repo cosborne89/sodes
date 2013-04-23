@@ -1,1 +1,2 @@
-$('task-index').html('<%= escape_javascript(<%= render "tasks/index" %>');
+//this does nothing
+$('#tasks-container').html('<%= escape_javascript(<%= render "tasks/index" %>');

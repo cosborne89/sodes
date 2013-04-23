@@ -14,16 +14,12 @@ $('.banner-object').mouseleave(function() {
 
 
 //Sort/Filter Tasks 
-$('form[data-remote]').click( function() {
-	$.getScript(this.href);
-	return false;
+//$('form[data-remote]').click( function() {
+//	$.getScript(this.href);
+//	return false;
 //	
-});
-$('a[data-remote]').click( function() {
-	$.getScript(this.href);
-	return false;
-//	
-});
+//});
+
 
 //document.ready closing tag
 });

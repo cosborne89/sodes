@@ -13,8 +13,6 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Quick Add Task has to submit AJAX-ially
 
-- Sort has to go up and down, watch the railscasts video. Default to the logical direction (true for active, false for complete)
-
 - Sort w/ hide per original wireframe layout (active : snoozed : closed)
 
 - Add jquery to Project#New so parent only an option if Toplevel is checked.
@@ -25,8 +23,8 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Edit Destroy Jquery to delete the spacer-row, too.
 
-- Implement updating without reloading per railscast.
-
 - JQuery for links: Click once shows button to "Go" and click text again edits field.
 
-- Formatting - Gradiant buttons along the top with a bar to indicate which one you're on. Hover dropdown to add new.
+- Jquery - Works for tasks#index, but clears the default filter if you sort before filtering.
+
+- jQuery - doesn't work for project#show

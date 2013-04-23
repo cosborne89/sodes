@@ -25,15 +25,15 @@
   <table class="item-list-table">
     <div id="task-index">
       <tr class="item-list-line-item data-row">
-        <th><%= sort_link(@searchtask, :priority, image_tag('/assets/star.png'), :remote => true) %></th>
-        <th><%= sort_link(@searchtask, :complete, image_tag('/assets/checkfill.png'))%></th>
+        <th><%= sort_link(@searchtask, :priority, image_tag('/assets/star.png'), {},  { :remote => true}) %></th>
+        <th><%= sort_link(@searchtask, :complete, image_tag('/assets/checkfill.png'), {},  { :remote => true})%></th>
         <% if @project_show %>
         <% else %>
-          <th><%= sort_link(@searchtask, :project_id, "PROJECT")%></th>
+          <th><%= sort_link(@searchtask, :project_id, "PROJECT", {},  { :remote => true})%></th>
         <% end %>
-        <th><%= sort_link(@searchtask, :description, "DESCRIPTION") %></th>
+        <th><%= sort_link(@searchtask, :description, "DESCRIPTION", {},  { :remote => true}) %></th>
         <th><%= link_to "CONTACT", :sort => "contact" %></th>
-        <th><%= sort_link(@searchtask, :active, image_tag('/assets/inactive.png'))%></th>
+        <th><%= sort_link(@searchtask, :active, image_tag('/assets/inactive.png'), {},  { :remote => true})%></th>
         <th><%=image_tag('/assets/edit.png')%></th>
         <th><%=image_tag('/assets/trash.png')%></th>
       </tr>
@@ -64,7 +64,11 @@
           <th></th>
         </tr>
         <tr class="item-list-line-item data-row">
-          <td><div class="task-row center-text"><%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/empty.png'), image_tag('/assets/star.png')] %></div></td>
+          <td>
+            <div class="task-row center-text">
+              <%= best_in_place [@user, task], :priority, :type => :checkbox, :collection => [image_tag('/assets/empty.png'), image_tag('/assets/star.png')] %>
+            </div>
+          </td>
           <td><div class="task-row center-text"><%= best_in_place [@user, task], :complete, :type => :checkbox, :collection => [image_tag('/assets/checkempty.png'), image_tag('/assets/checkfill.png')] %></div></td>
           <% if @project_show %>
           <% else %>
