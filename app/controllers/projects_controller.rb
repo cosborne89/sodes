@@ -24,9 +24,14 @@ class ProjectsController < ApplicationController
       @project = @user.projects.find(params[:id])
       @journals = @project.journals
       @project_show = 1
-      @searchtask = @project.tasks.search(params[:q])
-      @tasks = @searchtask.result
-      @task = @user.tasks.build
+      if params[:q]
+        @searchtask = @project.tasks.search(params[:q])
+        @tasks = @searchtask.result
+      else
+        @searchtask = @project.tasks.search(params[:q])
+        @tasks = @project.tasks.where(:active => true, :complete => false)
+      end
+      @task = @project.tasks.build
       @project_title = @user.projects.find(params[:id]).title
       @project_for_new = @user.projects.find(params[:id]).id
     else
@@ -35,6 +40,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
+      format.js { render }
     end
   end
 

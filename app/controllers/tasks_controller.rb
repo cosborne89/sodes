@@ -3,31 +3,18 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    if params[:user_id]
-      @user = User.find_by_displayname(params[:user_id])
-      @projects = @user.projects
-      if params[:project_id]
-        if params[:q]
-          @searchtask = @projects.tasks.search(params[:q])
-          @tasks = @searchtask.result
-        else
-          @tasks = @projects.tasks.where(:active => true, :complete => false)
-        end
-        @task = @project.tasks.build
-      else
-        if params[:q]
-          @searchtask = @user.tasks.search(params[:q])
-          @tasks = @searchtask.result
-        else
-          @searchtask = @user.tasks.search(params[:q])
-          @tasks = @user.tasks.where(:active => true, :complete => false)
-        end
-        @task = @user.tasks.build
-      end
-    else
-      @searchtask = Task.search(params[:q])
+    @user = User.find_by_displayname(params[:user_id])
+    @projects = @user.projects
+    if params[:project_id]
+      @searchtask = @project.tasks.search(params[:q])
       @tasks = @searchtask.result
-      @task = Task.build
+      @tasks = @projects.tasks.where(:active => true, :complete => false) unless params[:q]
+      @task = @project.tasks.build
+    else
+      @searchtask = @user.tasks.search(params[:q])
+      @tasks = @searchtask.result
+      @tasks = @user.tasks.where(:active => true, :complete => false) unless params[:q]
+      @task = @user.tasks.build
     end
     #render :partial => 'index' DOES AJAX WITH NO FORMATTING.
 #    respond_with @tasks

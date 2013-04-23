@@ -3,20 +3,20 @@
   <ul class="filter-nav">
     <li>Filter:</li>
     <li>
-      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-open"}) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-open", :remote => true}) do |f| %>
         <%= f.hidden_field :complete_eq, :value => false %>
         <%= f.hidden_field :active_eq, :value => true %>
         <%= f.submit "Open"%>
       <% end %>
     </li>
     <li>   
-      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-inactive"}) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-inactive", :remote => true}) do |f| %>
         <%= f.hidden_field :active_eq, :value => false %>
         <%= f.submit "Inactive"%>
       <% end %>
     </li>
     <li>   
-      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-closed"}) do |f| %>
+      <%= search_form_for(@searchtask, :url => user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-closed", :remote => true}) do |f| %>
         <%= f.hidden_field :complete_eq, :value => true %>
         <%= f.submit "Closed"%>
       <% end %>

@@ -13,8 +13,6 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Quick Add Task has to submit AJAX-ially
 
-- Sort w/ hide per original wireframe layout (active : snoozed : closed)
-
 - Add jquery to Project#New so parent only an option if Toplevel is checked.
 
 - Pass the sort parameter into the link for journals vs meetings.
