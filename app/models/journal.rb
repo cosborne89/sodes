@@ -4,6 +4,16 @@ class Journal < ActiveRecord::Base
   belongs_to :user, :foreign_key => "user_id"
   belongs_to :project, :foreign_key => "project_id"
   accepts_nested_attributes_for :tasks
-	validates_presence_of :project_id, :title
+  validates_presence_of :project_id, :title
+  before_save :meeting_check
+
+
+  def meeting_check
+  	if self.attendees
+  		self.meeting = true
+  	else
+  		self.meeting = false
+  	end
+  end
 
 end

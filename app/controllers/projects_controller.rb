@@ -18,25 +18,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    if params[:user_id]
-      @user = User.find_by_displayname(params[:user_id])
-      @projects = @user.projects
-      @project = @user.projects.find(params[:id])
-      @journals = @project.journals
-      @project_show = 1
-      if params[:q]
-        @searchtask = @project.tasks.search(params[:q])
-        @tasks = @searchtask.result
-      else
-        @searchtask = @project.tasks.search(params[:q])
-        @tasks = @project.tasks.where(:active => true, :complete => false)
-      end
-      @task = @project.tasks.build
-      @project_title = @user.projects.find(params[:id]).title
-      @project_for_new = @user.projects.find(params[:id]).id
-    else
-      @project = Project.find(params[:id])
-    end
+    @user = User.find_by_displayname(params[:user_id])
+    @projects = @user.projects
+    @project = @user.projects.find(params[:id])
+    @journals = @project.journals
+    @project_show = 1
+    @searchtask = @project.tasks.search(params[:q])
+    @tasks = @searchtask.result
+    @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
+    @task = @project.tasks.build
+    @project_title = @user.projects.find(params[:id]).title
+    @project_for_new = @user.projects.find(params[:id]).id
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }

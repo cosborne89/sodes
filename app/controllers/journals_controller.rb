@@ -71,21 +71,17 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    if params[:user_id]
-      @user = User.find_by_displayname(params[:user_id])
-      @projects = @user.projects.all
-      if params[:project_id]
-        @project = @user.projects.find(params[:project_id])
-        @journal = @project.journals.create(params[:journal])
-      else
-        @journal = @user.journals.create(params[:journal])
-      end
+    @user = User.find_by_displayname(params[:user_id])
+    @projects = @user.projects.all
+    if params[:project_id]
+      @project = @user.projects.find(params[:project_id])
+      @journal = @project.journals.create(params[:journal])
     else
-      @journal = Journal.new(params[:journal])
-    end
+      @journal = @user.journals.create(params[:journal])
+     end
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to user_journal_path(@user.displayname, @journal), notice: 'Journal was successfully created.' }
+        format.html { redirect_to user_journals_url, notice: 'Journal was successfully created.' }
         format.json { render json: @journal, status: :created, location: @journal }
       else
         format.html { render action: "new" }

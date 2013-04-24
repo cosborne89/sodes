@@ -53,7 +53,7 @@
           <td><div class="journal-row center-text"><%= link_to @user.projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
           <% end %>
           <td><div class="journal-row"><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></div></td>
-          <td><div class="journal-row"><%= journal.body %></div></td>
+          <td><div class="journal-row"><%= raw journal.body %></div></td>
           <td><div class="journal-row center-text"><%= journal.event_date %></div></td>
           <td><div class="journal-row center-text"><%= journal.begin_time %></div></td>
           <td><div class="journal-row center-text"><%= journal.end_time %></div></td>
