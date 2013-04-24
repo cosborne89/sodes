@@ -11,18 +11,16 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Refactor application.css and organize with comments.
 
-- Quick Add Task has to submit AJAX-ially
-
 - Add jquery to Project#New so parent only an option if Toplevel is checked.
 
 - Pass the sort parameter into the link for journals vs meetings.
 
-- Enable sorting on journals vs meetings for viewing all.
+- Enable sorting/filtering on journals vs meetings for viewing all.
 
 - Edit Destroy Jquery to delete the spacer-row, too.
 
 - JQuery for links: Click once shows button to "Go" and click text again edits field.
 
-- Jquery - Works for tasks#index, but clears the default filter if you sort before filtering.
+- May have to use a different partial for the project#show vs tasks#index b/c the project list shows up when you AJAX refresh the page b/c @project_show is not passed through the ajax request.
 
-- jQuery - doesn't work for project#show
+- Reformat journals row - rowspan = 2, include the title in the top row and the body in the bottom row. Stack delete and trash. Stack begin and end.

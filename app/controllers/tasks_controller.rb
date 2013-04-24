@@ -6,10 +6,10 @@ class TasksController < ApplicationController
     @user = User.find_by_displayname(params[:user_id])
     @projects = @user.projects
     if params[:project_id]
-      @searchtask = @project.tasks.search(params[:q])
+      @searchtask = @user.projects.tasks.search(params[:q])
       @tasks = @searchtask.result
       @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
-      @task = @project.tasks.build
+      @task = @projects.tasks.build
     else
       @searchtask = @user.tasks.search(params[:q])
       @tasks = @searchtask.result
