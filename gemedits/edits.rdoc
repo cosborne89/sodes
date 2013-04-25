@@ -1,0 +1,19 @@
+README
+
+Edits stored here should contain the path to the configurable file in the root system and then have details of the change. Example
+
+//
+
+Editing ckeditor
+Windows Path -> C:\RailsInstaller\Ruby1.9.3\lib\ruby\gems\1.9.1\gems\ckeditor-4.0.4\app\assets\javascripts\ckeditor
+Changes -> 
+  //Edit the toolbar
+  config.toolbar = 'Mini'
+  config.toolbar_Mini = 
+  [
+    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ] },
+    { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent' ] }
+  ];
+
+//
+

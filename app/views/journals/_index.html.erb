@@ -6,61 +6,56 @@
         <% else %>
         <th>PROJECT</th>
         <% end %>
-        <th>TITLE</th>
         <th>NOTES</th>
-        <th>DATE</th>
-        <th>BEGIN</th>
-        <th>END</th>
         <th>ATTENDEES</th>
+        <th>TIME</th>
+        <th>DATE</th>
         <th><%=image_tag('/assets/edit.png')%></th>
         <th><%=image_tag('/assets/trash.png')%></th>
       </tr>
-        <tr class="spacer-row">
-          <th></th>
-          <th></th>
-          <% if @project_show %>
-          <% else %>
-          <th></th>
-          <% end %>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
+      <tr class="spacer-row">
+        <th></th>
+        <% if @project_show %>
+        <% else %>
+        <th></th>
+        <% end %>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
     <% @journals.each do |journal| %>
-        <tr class="spacer-row">
-          <th></th>
-          <th></th>
-          <% if @project_show %>
-          <% else %>
-          <th></th>
-          <% end %>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr class="item-list-line-item data-row">
-          <td><div class="journal-row center-text"><%= best_in_place [@user, journal], :meeting, :type => :checkbox, :collection => [image_tag('/assets/journal.png'), image_tag('/assets/meeting.png')] %></div></td>
-          <% if @project_show %>
-          <% else %>
-          <td><div class="journal-row center-text"><%= link_to @user.projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
-          <% end %>
-          <td><div class="journal-row"><%= link_to journal.title, user_journal_path(@user.displayname, journal) %></div></td>
-          <td><div class="journal-row"><%= raw journal.body %></div></td>
-          <td><div class="journal-row center-text"><%= journal.event_date %></div></td>
-          <td><div class="journal-row center-text"><%= journal.begin_time %></div></td>
-          <td><div class="journal-row center-text"><%= journal.end_time %></div></td>
-          <td><div class="journal-row center-text"><%= journal.attendees %></div></td>
-          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_journal_path(@user.displayname, journal) %></div></td>
-          <td><div class="journal-row center-text"><%= link_to image_tag('/assets/trash.png'), user_journal_path(@user.displayname, journal), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
-        </tr>
+      <tr class="spacer-row">
+        <th></th>
+        <% if @project_show %>
+        <% else %>
+        <th></th>
+        <% end %>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr class="item-list-line-item data-row">
+        <td ><div class="center-text"><%= best_in_place [@user, journal], :meeting, :type => :checkbox, :collection => [image_tag('/assets/journal.png'), image_tag('/assets/meeting.png')] %></div></td>
+        <% if @project_show %>
+        <% else %>
+         <td class="no-padding"><div class="center-text"><%= link_to @user.projects.find(journal.project_id).title, user_project_path(@user.displayname, @projects.find(journal.project_id)) %></div></td>
+        <% end %>
+        <td class="no-padding"><div class="no-padding"><%= link_to journal.title, user_journal_path(@user.displayname, journal), :class => "bold" %><br /><%= raw journal.body %></div></td>
+        <td class="no-padding"><div class="center-text"><%= journal.attendees %></div></td>
+        <td class="no-padding"><div class="center-text"><%= journal.event_date %></div></td>
+        <td class="no-padding"><div class="center-text"><%= journal.begin_time %></div><div class="center-text"><%= journal.end_time %></td>
+
+        <td><div class="center-text journal-row"><%= link_to image_tag('/assets/edit.png'), edit_user_journal_path(@user.displayname, journal) %></div></td>
+        <td ><div class="center-text journal-row"><%= link_to image_tag('/assets/trash.png'), user_journal_path(@user.displayname, journal), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
+      </tr>
+
+
   <% end %>
   </table>
 </div>

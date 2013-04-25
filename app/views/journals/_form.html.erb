@@ -10,45 +10,79 @@
       </ul>
     </div>
   <% end %>
-
-<!--  <div class="field">
-    <%#= f.label :meeting %><br />
-    <%#= f.check_box :meeting %>
-  </div> -->
+  <br />
+<table id = "journal-form">
+  <tbody>
+    <!--
+    <tr>
+     <td>
+       <h3>MEETING</H3>
+     </td>
+     <td>
+       <%#= f.check_box :meeting %>
+     </td>
+    </tr>
+     -->
+    <tr>
+      <td class="title-column">
+        <h3>TITLE</H3>
+      </td>
+      <td class="input-column">
+        <%= f.text_field :title %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>DATE</H3>
+      </td>
+      <td class="date-column">
+        <%= f.text_field :event_date, :class => "datepicker" %>
+      </td>
+    </tr>
+    <tr>
+      <td class="title-column">
+        <h3>PROJECT</H3>
+      </td>
+      <td class="input-column">
+        <% if params[:project_id] %>  
+        <%= f.label @project_title %>
+        <%= f.hidden_field :project_id, :value => params[:project_id] %>
+        <% else %>
+        <%= select("journal", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false})%>
+        <% end %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>BEGIN TIME</H3>
+      </td>
+      <td class="date-column">
+        <%= f.time_select :begin_time %>
+      </td>
+    <tr>
+      <td class="title-column">
+        <h3>ATTENDEES</H3>
+      </td>
+      <td class="input-column">
+        <%= f.text_field :attendees %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>END TIME</H3>
+      </td>
+      <td class="date-column">
+        <%= f.time_select :end_time %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <h3>NOTES</H3>
+      <br />
+    <%= f.cktext_area :body, :class => "editor", :ckeditor => {:toolbar => "Mini"} %>
   </div>
-  <div class="field">
-    <%= f.label :event_date %><br />
-    <%= f.date_select :event_date %>
-  </div>
-  <div class="field">
-    <%= f.label :begin_time %><br />
-    <%= f.time_select :begin_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br />
-    <%= f.time_select :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :attendees %><br />
-    <%= f.text_field :attendees %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.cktext_area :body, :class => "editor", :ckeditor => {:toolbar => "mini"} %>
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br />
-    <% if params[:project_id] %>  
-    <%= f.label @project_title %>
-    <%= f.hidden_field :project_id, :value => params[:project_id] %>
-    <% else %>
-    <%= select("journal", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false})%>
-    <% end %>
-  </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br />
 <% end %>

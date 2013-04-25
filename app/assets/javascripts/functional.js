@@ -4,6 +4,7 @@ $('.delete_object').bind('ajax:success', function() {
     $(this).closest('tr').fadeOut();
 }); 
 
+$('.datepicker').datepicker();
 
 //document.ready closing tag
 });
