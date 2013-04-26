@@ -74,8 +74,8 @@
           <% else %>
             <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
           <% end %>
-          <td><div class="task-row"><%= best_in_place [@user, task], :description %></div></td>
-          <td><div class="task-row center-text"><%= task.contact %></div></td>
+          <td><div class="task-row"><%= best_in_place [@user, task], :description, :inner_class => "form-place" %></div></td>
+          <td><div class="task-row center-text"><%= best_in_place [@user, task], :contact, :inner_class => "form-place" %></div></td>
           <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/inactive.png'), image_tag('/assets/empty.png')] %></div></td>
           <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>
           <td><div class="task-row center-text"><%= link_to image_tag('/assets/trash.png'), user_task_path(@user.displayname, task), method: :delete, :remote => true, :class => 'delete_object',  data: { confirm: 'Are you sure?' } %></div></td>
