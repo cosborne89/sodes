@@ -1,0 +1,149 @@
+/*banner.css*/
+/*Meta Banner info*/
+#top-banner {
+	margin-bottom: 2em;
+}
+#bottom-banner {
+	color: #f2f2f2;
+	clear: both;
+	margin-top: -2em;
+	height: 2em; /*Having these equal each other, but negative, ensures the whole banner is shown.*/
+}
+
+.banner {
+	margin: 0px;
+	width: 100%;
+	line-height: 35px;
+	/*Background Definition from http://www.colorzilla.com/gradient-editor/ */
+	background: #52a5ea; /* Old browsers */
+	background: -moz-linear-gradient(top,  #52a5ea 1%, #377dae 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#52a5ea), color-stop(100%,#377dae)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #52a5ea 1%,#377dae 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #52a5ea 1%,#377dae 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #52a5ea 1%,#377dae 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #52a5ea 1%,#377dae 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52a5ea', endColorstr='#377dae',GradientType=0 ); /* IE6-9 */
+	padding: 0px;
+	border: 1px solid #2d6798;
+}
+
+.banner p {
+	margin: 0px;
+}
+
+.banner-left-nav {
+	list-style-type: none;
+}
+
+.banner-inner, .content-int {
+	margin-left: 12.5%;
+	width: 75%;
+}
+/*Banner links*/
+.sodes-title {
+	display: inline;
+	font-size: .8em;
+	font-weight: bold;
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	color: #377dae;
+	padding: 5px 10px;
+}
+
+.banner-text, .banner-text > a {
+	display: inline;
+	font-size: .9em;
+	color: #f2f2f2;
+	padding: 5px 2px;
+	margin: 3px;
+	line-height: 35px;
+	text-decoration: none;
+}
+
+.nav-block {
+	background: #7db9e8; /* Old browsers */
+	background: -moz-linear-gradient(top, #7db9e8 27%, #377dae 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(27%,#7db9e8), color-stop(100%,#377dae)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #7db9e8 27%,#377dae 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#377dae',GradientType=0 ); /* IE6-9 */
+	margin: 0px;
+	text-align: center;
+	height: 35px;
+	top: 0;
+	line-height: 35px;
+	padding: 0px;
+	border-left: 1px solid #2d6798;
+	border-right: 1px solid #2d6798;
+	display: inline-block;
+	width: 10em;
+}
+
+.banner-nav {
+	display: inline-table;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	}
+
+.banner-nav > li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: table-cell;
+	position: relative;
+}
+
+
+/* dropdowns
+*************************/
+
+ul.dropdown {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	position: absolute;
+	z-index: 999;
+	top: 100%;
+	display: none;
+}
+
+ul.dropdown ul.dropdown {
+	top: 0;
+	left: 95%;
+}
+
+.dropdown li {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: table-cell;
+	width: 50%;
+}
+
+ul.dropdown li a {
+	background: #7db9e8; /* Old browsers */
+	background: -moz-linear-gradient(top, #7db9e8 27%, #377dae 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(27%,#7db9e8), color-stop(100%,#377dae)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #7db9e8 27%,#377dae 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #7db9e8 27%,#377dae 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#377dae',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+	margin: 0px;
+	height: 35px;
+	top: 0;
+	line-height: 35px;
+	padding: 0px;
+	border-left: 1px solid #2d6798;
+	border-right: 1px solid #2d6798;
+	display: inline-block;
+	width: 6em;
+}
+
+/*End Dropdowns*/
+

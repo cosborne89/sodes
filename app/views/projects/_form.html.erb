@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <p>COMMON KNOWLEDGE</p>
-    <%= f.text_area :common_knowledge %>
+    <%= f.cktext_area :common_knowledge, :class => "editor", :ckeditor => {:toolbar => "Mini"} %>
   </div>
 <!--  <div class="field"> -->
 <!--    <p>TOPLEVEL?</p> -->
