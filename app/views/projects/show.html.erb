@@ -1,18 +1,12 @@
-<div class='page-title-shell'>
-  <h1><%= @project.title.upcase %></h1>
-  <div class="clear-shell">
+<div class="content-title">
+    <h1><%= @project.title.upcase %></h1>
     <%= link_to 'EDIT', edit_user_project_path(@user.displayname, @project), :class => "grey-on-blue-link" %>
-  </div>
-</div>
-<p>
-  <b>DATE ADDED:</b>
-  <%= @project.time.to_date %>
-</p>
+    <div class="right-align">
 
-<p>
-  <b>DESCRIPTION:</b>
-  <%= @project.description %>
-</p>
+    </div>
+</div>
+
+
 <div class="content-left">
   <div class="content-title">
     <h2><%=link_to 'TASKS', user_tasks_path(@user.displayname)%></h2>
@@ -32,8 +26,16 @@
 <div class="item-list-container">
   <p id="notice"><%= notice %></p>
   <p>
+    <b>DESCRIPTION:</b>
+    <%= @project.description %>
+  </p>
+  <p>
     <b>Parent:</b>
     <%= @project.parent %>
+  </p>
+  <p>
+    <b>DATE ADDED:</b><br />
+    <%= @project.time.to_date %>
   </p>
   <p>
     <b>Due date:</b>

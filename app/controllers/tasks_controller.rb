@@ -5,19 +5,18 @@ class TasksController < ApplicationController
   def index
     @user = User.find_by_displayname(params[:user_id])
     @projects = @user.projects
-    if params[:project_id]
-      @searchtask = @user.projects.tasks.search(params[:q])
+    if params[:project_id] #if on the project#show page.
+      @project_show = 1
+      @project = @projects.find(params[:project_id])
+      @searchtask = @project.tasks.search(params[:q])
       @tasks = @searchtask.result
       @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
-      @task = @projects.tasks.build
     else
       @searchtask = @user.tasks.search(params[:q])
       @tasks = @searchtask.result
       @tasks = @searchtask.result.where(:active => true, :complete => false) unless @searchtask.result.where(:active => true, :complete => false).empty?
-      @task = @user.tasks.build
     end
-    #render :partial => 'index' DOES AJAX WITH NO FORMATTING.
-#    respond_with @tasks
+    @task = @user.tasks.build
     respond_to do |format|
       format.html # index.html.erb
       format.js

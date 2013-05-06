@@ -31,8 +31,8 @@
         <% else %>
           <th><%= sort_link(@searchtask, :project_id, "PROJECT", {},  { :remote => true})%></th>
         <% end %>
-        <th><%= sort_link(@searchtask, :description, "DESCRIPTION", {},  { :remote => true}) %></th>
-        <th><%= link_to "CONTACT", :sort => "contact" %></th>
+        <th class="task-description"><%= sort_link(@searchtask, :description, "DESCRIPTION",{},  {:remote => true} ) %></th>
+        <th><%= sort_link(@searchtask, :contact, "CONTACT", {},  { :remote => true}) %></th>
         <th><%= sort_link(@searchtask, :active, image_tag('/assets/inactive.png'), {},  { :remote => true})%></th>
         <th><%=image_tag('/assets/edit.png')%></th>
         <th><%=image_tag('/assets/trash.png')%></th>
@@ -74,7 +74,7 @@
           <% else %>
             <td><div class="task-row center-text"><%= link_to @user.projects.find(task.project_id).title, user_project_path(@user.displayname, @user.projects.find(task.project_id)) %></div></td>
           <% end %>
-          <td><div class="task-row"><%= best_in_place [@user, task], :description, :inner_class => "form-place" %></div></td>
+          <td><div class="task-row table-item-padding-left"><%= best_in_place [@user, task], :description, :inner_class => "form-place" %></div></td>
           <td><div class="task-row center-text"><%= best_in_place [@user, task], :contact, :inner_class => "form-place" %></div></td>
           <td><div class="task-row center-text"><%= best_in_place [@user, task], :active, :type => :checkbox, :collection => [image_tag('/assets/inactive.png'), image_tag('/assets/empty.png')] %></div></td>
           <td><div class="task-row center-text"><%= link_to image_tag('/assets/edit.png'), edit_user_task_path(@user.displayname, task) %></div></td>

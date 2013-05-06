@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
       @user = User.find_by_displayname(params[:id])
-      @projects = @user.projects.find(:all, :limit => 5, :order => 'updated_at desc')
+      @searchproject = @user.projects.search(params[:q])
+      @projects = @searchproject.result.find(:all, :limit => 5, :order => 'updated_at desc')
       @journals = @user.journals.find(:all, :limit => 5, :order => 'updated_at desc')
       @searchtask = @user.tasks.search(params[:q])
       @tasks = @searchtask.result.where(:active => true, :complete => false).limit(5)

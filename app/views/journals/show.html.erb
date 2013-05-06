@@ -5,36 +5,70 @@
   <%= @journal.meeting %>
 </p>
 
-<p>
-  <b>Title:</b>
-  <%= @journal.title %>
-</p>
 
-<p>
-  <b>Event date:</b>
-  <%= @journal.event_date %>
-</p>
-
-<p>
-  <b>Begin time:</b>
-  <%= @journal.begin_time %>
-</p>
-
-<p>
-  <b>End time:</b>
-  <%= @journal.end_time %>
-</p>
-
-<p>
-  <b>Attendees:</b>
-  <%= @journal.attendees %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @journal.body %>
-</p>
-
-
+<table id ="journal-frame">
+  <tbody>
+    <!--
+    <tr>
+     <td>
+       <h3>MEETING</H3>
+     </td>
+     <td>
+       <%#= f.check_box :meeting %>
+     </td>
+    </tr>
+     -->
+    <tr>
+      <td class="title-column">
+        <h3>TITLE</H3>
+      </td>
+      <td class="input-column">
+        <%= @journal.title %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>DATE</H3>
+      </td>
+      <td class="date-column">
+        <%= @journal.event_date %>
+      </td>
+    </tr>
+    <tr>
+      <td class="title-column">
+        <h3>PROJECT</H3>
+      </td>
+      <td class="input-column">
+        <%= @projects.find(@journal.project_id).title %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>BEGIN TIME</H3>
+      </td>
+      <td class="date-column">
+        <%= @journal.begin_time %>
+      </td>
+    <tr>
+      <td class="title-column">
+        <h3>ATTENDEES</H3>
+      </td>
+      <td class="input-column">
+        <%= @journal.attendees %>
+      </td>
+      <td class="spacer-column"></td>
+      <td class="title-column">
+        <h3>END TIME</H3>
+      </td>
+      <td class="date-column">
+        <%= @journal.end_time %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+  <div class="field">
+    <h3>NOTES</H3>
+      <br />
+    <%= raw @journal.body %>
+  </div>
 <%= link_to 'Edit', edit_user_journal_path(@user.displayname, @journal) %> |
 <%= link_to 'Back', user_journals_path(@user.displayname) %>

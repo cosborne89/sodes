@@ -28,12 +28,14 @@
         <%= f.hidden_field :project_id, :value => @project_for_new %>
         <% else %>
         <td class="center-text">
-          <%= select("task", "project_id", @projects.collect {|p| [ p.title, p.id ] }, {:include_blank => false}, :class => "my-class")%>
+          <%= select("task", "project_id", @projects.sort_by(&:title).collect {|p| [ p.title, p.id ] }, {:include_blank => false}, :class => "my-class")%>
         </td>
       <% end %>
-    <td><%= f.text_field :description %></td>
-    <td><%= f.text_field :contact %></td>
-    <td class="center-text"><%= f.check_box :active, :checked => true%></td>
-    <td class="actions center-text" colspan="2"><%= f.submit "Save Task" %></td>
+    <td class="center-text"><%= f.text_field :description, :class => "ninetyfive-width" %></td>
+    <td class="center-text"><%= f.text_field :contact, :class => "ninetyfive-width" %></td>
+    <!--Make  the task active by default -->
+    <%= f.hidden_field :active, :value => true %>
+    <!-- End task active default -->
+    <td class="actions center-text" colspan="3"><%= f.submit "Save Task" %></td>
   </tr>
 <% end %>

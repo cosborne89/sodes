@@ -1,17 +1,22 @@
 class ProjectsController < ApplicationController
+  respond_to :html #This line is needed for RANSACK to return ajaxially (for sorting columns, etc)
   # GET /projects
   # GET /projects.json
   def index
-    if params[:user_id]
-      @user = User.find_by_displayname(params[:user_id])
-      @projects = @user.projects
+    @user = User.find_by_displayname(params[:user_id])
+
+    @searchproject = @user.projects.search(params[:q])
+#   @projects = @searchproject.result
+    if params[:q].nil?
+      @projects = @searchproject.result.order('title ASC')
     else
-      @projects = Project.all
+      @projects = @searchproject.result
     end
+
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @projects }
+      format.js #This line is needed for RANSACK to return ajaxially (for sorting columns, etc)
     end
   end
 
