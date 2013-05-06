@@ -31,7 +31,7 @@
     </tr>
     <tr class="item-list-line-item data-row">
         <td><div class="task-row table-item-padding-left"><%= link_to project.title, user_project_path(@user.displayname, project) %></div></td>
-        <td><div class="task-row table-item-padding-left"><%= best_in_place [@user, project], :description, :classes => "project-description" %></div></td>
+        <td><div class="task-row table-item-padding-left"><%= best_in_place [@user, project], :description, :inner_class => "form-place", :classes => "project-description" %></div></td>
         <td><div class="task-row center-text"><%= project.time.to_date %></div></td>
         <td><div class="task-row center-text"><%= project.parent %></div></td>
         <td><div class="task-row center-text"><%= project.due_date %></div></td>

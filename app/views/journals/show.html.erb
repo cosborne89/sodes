@@ -1,74 +1,70 @@
 <p id="notice"><%= notice %></p>
+<div class="item-list-container">
+  <table id ="journal-frame">
+    <tbody>
+      <!--
+      <tr>
+       <td>
+         <h3>MEETING</H3>
+       </td>
+       <td>
+         <%#= f.check_box :meeting %>
+       </td>
+      </tr>
+       -->
+      <tr>
+        <td class="title-column">
+          <h3>TITLE</H3>
+        </td>
+        <td class="input-column light-blue-text">
+          <%= @journal.title %>
+        </td>
+        <td class="spacer-column"></td>
+        <td class="title-column">
+          <h3>DATE</H3>
+        </td>
+        <td class="date-column light-blue-text">
+          <%= @journal.event_date %>
+        </td>
+      </tr>
+      <tr>
+        <td class="title-column">
+          <h3>PROJECT</H3>
+        </td>
+        <td class="input-column light-blue-text">
+          <%= @projects.find(@journal.project_id).title %>
+        </td>
+        <td class="spacer-column"></td>
+        <td class="title-column">
+          <h3>BEGIN TIME</H3>
+        </td>
+        <td class="date-column light-blue-text">
+          <%= @journal.begin_time %>
+        </td>
+      <tr>
+        <td class="title-column">
+          <h3>ATTENDEES</H3>
+        </td>
+        <td class="input-column light-blue-text">
+          <%= @journal.attendees %>
+        </td>
+        <td class="spacer-column"></td>
+        <td class="title-column">
+          <h3>END TIME</H3>
+        </td>
+        <td class="date-column light-blue-text">
+          <%= @journal.end_time %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<p>
-  <b>Meeting:</b>
-  <%= @journal.meeting %>
-</p>
-
-
-<table id ="journal-frame">
-  <tbody>
-    <!--
-    <tr>
-     <td>
-       <h3>MEETING</H3>
-     </td>
-     <td>
-       <%#= f.check_box :meeting %>
-     </td>
-    </tr>
-     -->
-    <tr>
-      <td class="title-column">
-        <h3>TITLE</H3>
-      </td>
-      <td class="input-column">
-        <%= @journal.title %>
-      </td>
-      <td class="spacer-column"></td>
-      <td class="title-column">
-        <h3>DATE</H3>
-      </td>
-      <td class="date-column">
-        <%= @journal.event_date %>
-      </td>
-    </tr>
-    <tr>
-      <td class="title-column">
-        <h3>PROJECT</H3>
-      </td>
-      <td class="input-column">
-        <%= @projects.find(@journal.project_id).title %>
-      </td>
-      <td class="spacer-column"></td>
-      <td class="title-column">
-        <h3>BEGIN TIME</H3>
-      </td>
-      <td class="date-column">
-        <%= @journal.begin_time %>
-      </td>
-    <tr>
-      <td class="title-column">
-        <h3>ATTENDEES</H3>
-      </td>
-      <td class="input-column">
-        <%= @journal.attendees %>
-      </td>
-      <td class="spacer-column"></td>
-      <td class="title-column">
-        <h3>END TIME</H3>
-      </td>
-      <td class="date-column">
-        <%= @journal.end_time %>
-      </td>
-    </tr>
-  </tbody>
-</table>
 <br />
-  <div class="field">
+  <div class="light-blue-text">
     <h3>NOTES</H3>
-      <br />
-    <%= raw @journal.body %>
+    <p><%= raw @journal.body %></p>
   </div>
+</div>
+<br />
 <%= link_to 'Edit', edit_user_journal_path(@user.displayname, @journal) %> |
 <%= link_to 'Back', user_journals_path(@user.displayname) %>

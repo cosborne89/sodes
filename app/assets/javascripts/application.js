@@ -15,6 +15,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require jquery-ui
-//=require ckeditor/init
+//= require ckeditor/init
+//= require jquery.timepicker.js
 //= require_tree .
 

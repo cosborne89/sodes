@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_tree ../../../vendor/
  *= require_tree .
  */
 * {
@@ -26,9 +27,13 @@ body {
 	padding: 0;
 	overflow-x: hidden;
 }
-h1, h2, p, th, td, a, li {
-	margin: 8px;
+h1, h2, h3, p, th, td, a, li {
+
 	font-family: Lato, verdana, arial, helvetica, sans-serif;
+}
+
+.light-blue-text, h3 {
+	color: #3b84b7;
 }
 
 h1 {
@@ -83,7 +88,7 @@ h1 {
 
 h2 {
 	background-color: #d8d8d8;
-	border-radius: 3px;
+	border-radius: 1px;
 	color: #357fae;
 	width: auto;
 	padding: 5px;
@@ -155,10 +160,7 @@ h2 > a {
 	background-color: #ffffff;
 	padding: 2em;
 }
-.field, h3 {
-	color: #3b84b7;
-	font-family: verdana, arial, helvetica, sans-serif;
-}
+
 
 #journal-frame {
 	width: 100%;
@@ -187,5 +189,11 @@ h2 > a {
 #journal-frame input, #journal_project_id {
 	width: 100%;
 }
-}
+
+
 /*END FORM CSS*/
+
+/*WHITE SPACE CONTROL CSS*/
+#common-knowledge-container {
+	min-height: 250px;
+}

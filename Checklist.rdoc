@@ -2,9 +2,6 @@ Checklist.rdoc (see git history for checked off tasks)
 
 - Edit "Edit" and "Back" on /new for journal and task so that they route to task#index or journal#index if :project_id doesn't exist. Should be straightforward ternary.
 
-- Clean up indexes by
-	d) Defining column width.
-
 - Change some datetimes to just time. These are journal begin and end time, task due date, project due date
 
 - Add validation so that description/title are needed for everything.

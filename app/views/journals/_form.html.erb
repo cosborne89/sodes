@@ -55,7 +55,7 @@
         <h3>BEGIN TIME</H3>
       </td>
       <td class="date-column">
-        <%= f.time_select :begin_time %>
+        <%= f.text_field :begin_time, :class => "timepicker" %>
       </td>
     <tr>
       <td class="title-column">
@@ -69,7 +69,7 @@
         <h3>END TIME</H3>
       </td>
       <td class="date-column">
-        <%= f.time_select :end_time %>
+        <%= f.text_field :end_time, :class => "timepicker" %>
       </td>
     </tr>
   </tbody>

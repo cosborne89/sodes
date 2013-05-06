@@ -22,34 +22,37 @@
 </div>
 
 <div class="content-right">
-<h2>PROJECT INFO:</h2>
-<div class="item-list-container">
-  <p id="notice"><%= notice %></p>
-  <p>
-    <b>DESCRIPTION:</b>
-    <%= @project.description %>
-  </p>
-  <p>
-    <b>Parent:</b>
-    <%= @project.parent %>
-  </p>
-  <p>
-    <b>DATE ADDED:</b><br />
-    <%= @project.time.to_date %>
-  </p>
-  <p>
-    <b>Due date:</b>
-    <%= @project.due_date %>
-  </p>
-  <p>
-    <b>Budget:</b>
-    <%= @project.budget %>
-  </p>
-</div>
-<h2>COMMON KNOWLEDGE:</h2>
-<div class="item-list-container">
-  <p>
-    <%= raw @project.common_knowledge %>
-  </p>
-</div>
+  <div class="content-title">
+    <h2>PROJECT INFO:</h2>
+  </div>
+  <div class="item-list-container">
+    <p id="notice"><%= notice %></p>
+    <p>
+      <b>DESCRIPTION:</b>
+      <%= @project.description %>
+    </p>
+    <p>
+      <b>PARENT:</b>
+      <%= @project.parent %>
+    </p>
+    <p>
+      <b>DATE ADDED:</b>
+      <%= @project.time.to_date %>
+    </p>
+    <p>
+      <b>DUE DATE:</b>
+      <%= @project.due_date %>
+    </p>
+    <p>
+      <b>BUDGET:</b>
+      <%= @project.budget %>
+    </p>
+  </div>
+  <h2>COMMON KNOWLEDGE:</h2>
+  <div class="item-list-container" id="common-knowledge-container">
+    <p>
+      <%= raw @project.common_knowledge %>
+    </p>
+  </div>
+
 </div>

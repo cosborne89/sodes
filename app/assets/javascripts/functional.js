@@ -6,6 +6,9 @@ $('.delete_object').bind('ajax:success', function() {
 //Set up datepicker class
 $('.datepicker').datepicker();
 
+//Set up timepicker class
+$('.timepicker').timepicker({'minTime': '6:00am', 'maxTime': '7:00pm'});
+
 //document.ready closing tag
 });
 

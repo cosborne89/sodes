@@ -1,7 +1,7 @@
 /*Index CSS*/
 
 .task-description {
-	width: 65%;
+	width: 60%;
 }
 
 .filter-nav {
@@ -22,34 +22,24 @@
 	display: inline;
 
 }
-.content-int > .item-list-container {
+
+.content-title h2 {
+	margin-top: 1.5em;
+}
+
+.content-int .item-list-container {
 	clear: left;
 	background-color: #ffffff;
-	padding: 2em;
+	padding: 2.4%;
 	bottom: 5em;
 	top: 3.5em;
 	overflow-x: hidden;
 	overflow-y: auto;
-	width: 100%;
-}
-
-.content-left > .item-list-container {
-	background-color: #ffffff;
-	padding: 2em;
-	overflow-x: hidden;
-	overflow-y: scroll;
 	width: 95%;
 }
 
-.content-right > .item-list-container {
-	background-color: #ffffff;
-	padding: 2em;
-	overflow-x: hidden;
-	overflow-y: auto;
-	width: 95%;
-}
 
-.content-left > .tasks-container, .content-int > .tasks-container {
+.content-int .tasks-container {
 	padding-top: .6em;
 }
 
@@ -65,10 +55,11 @@
 	color: #3b84b7;
 }
 
-.item-list-table * {
+.item-list-table td * {
 	font-family: 'Lucida Grande', sans-serif;
 	font-weight: 400;
 }
+
 .item-list-table tr.data-row th, .item-list-table tr.data-row td {
 	border-top: .1em solid #347ea7;
 	border-right: .1em solid #347ea7;

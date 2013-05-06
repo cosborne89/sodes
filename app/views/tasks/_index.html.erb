@@ -12,6 +12,7 @@
     <li>   
       <%= search_form_for(@searchtask, :url => @project_show ? user_project_tasks_path(@user.displayname, @project.id) : user_tasks_path(@user.displayname), :html => {:class => "inline-form", :id => "task-search-inactive", :remote => true}) do |f| %>
         <%= f.hidden_field :active_eq, :value => false %>
+        <%= f.hidden_field :complete_eq, :value => false %>
         <%= f.submit "Inactive"%>
       <% end %>
     </li>

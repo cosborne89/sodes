@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  respond_to :html #This line is needed for RANSACK to return ajaxially (for sorting columns, etc)
+  respond_to :html, :json #This line is needed for RANSACK and best_in_place to return ajaxially (for sorting columns, etc)
   # GET /projects
   # GET /projects.json
   def index
@@ -95,21 +95,22 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
     @project.update_attributes(params[:project])
-    respond_to do |format|
-      if @project.update_attributes(params[:project])
-        format.html { 
-          if request.xhr?
-            render :text => params[:project].values.first
-          else
-            redirect_to(user_projects_url(@user.displayname), notice: 'Project was successfully updated.')
-          end
-         }
-        format.json { render head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with @project #this line was added to that Best_in_place would respond ajaxially, below this is what was previously here.
+#      respond_to do |format|
+#        if @project.update_attributes(params[:project])
+#          format.html { 
+#            if request.xhr?
+#              render :text => params[:project].values.first
+#            else
+#              redirect_to(user_projects_url(@user.displayname), notice: 'Project was successfully updated.')
+#            end
+#           }
+#          format.json { render head :no_content }
+#        else
+#          format.html { render action: "edit" }
+#          format.json { render json: @project.errors, status: :unprocessable_entity }
+#        end
+#      end
   end
 
   # DELETE /projects/1
